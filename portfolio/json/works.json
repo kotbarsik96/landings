@@ -1,0 +1,140 @@
+[
+    {
+        "title": "device",
+        "id": "dev23",
+        "type": "Интернет-магазин",
+        "features": [
+            "Слайдеры",
+            "Ползунок для установления цены (в фильтре товаров)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/device/dist/main/index.html",
+        "imgDesktop": "img/sites-photo/device/desktop",
+        "imgMobile": "img/sites-photo/device/mobile",
+        "imgIcon": "img/sites-photo/device/icon.png",
+        "isDesktop": true
+    },
+    {
+        "title": "GamerShop",
+        "id": "gshop41",
+        "type": "Интернет-магазин",
+        "features": [
+            "Слайдеры",
+            "Анимация при прокрутке страницы"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/gamershop/dist/index.html",
+        "imgDesktop": "img/sites-photo/gamershop/desktop",
+        "imgMobile": "img/sites-photo/gamershop/mobile",
+        "imgIcon": "img/sites-photo/gamershop/icon.png",
+        "isDesktop": true
+    },
+    {
+        "title": "molecule",
+        "id": "mlc16",
+        "type": "Услуги по разработке ПО",
+        "features": [
+            "Слайдеры"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/molecule/dist/index.html",
+        "imgDesktop": "img/sites-photo/molecule/desktop",
+        "imgMobile": "img/sites-photo/molecule/mobile",
+        "imgIcon": "img/sites-photo/molecule/icon.png",
+        "isDesktop": true
+    },
+    {
+        "title": "streetster",
+        "id": "strtstr145",
+        "type": "Интернет-магазин",
+        "features": [
+            "Слайдеры",
+            "Слайдеры (связанные с выбором цвета)",
+            "Работающая корзина (на JS)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/streetster/dist/html/index/index.html",
+        "imgDesktop": "img/sites-photo/streetster/desktop",
+        "imgMobile": "img/sites-photo/streetster/mobile",
+        "imgIcon": "img/sites-photo/streetster/icon.svg",
+        "isDesktop": false
+    },
+    {
+        "title": "Takeaway & Delivery",
+        "id": "tkwdlvr51",
+        "type": "Онлайн заказ доставки еды",
+        "features": [
+            "Переключаемое меню",
+            "Работающая корзина (на JS)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/T&D/dist/index.html",
+        "imgDesktop": "img/sites-photo/t-d/desktop",
+        "imgMobile": "img/sites-photo/t-d/mobile",
+        "imgIcon": "img/sites-photo/t-d/icon.png",
+        "isDesktop": true
+    },
+    {
+        "title": "trevland",
+        "id": "trvlnd54",
+        "type": "Бронирование путешествий",
+        "features": [
+            "Слайдеры"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/trevland/dist/index.html",
+        "imgDesktop": "img/sites-photo/trevland/desktop",
+        "imgMobile": "img/sites-photo/trevland/mobile",
+        "imgIcon": "img/sites-photo/trevland/icon.svg",
+        "isDesktop": true
+    },
+    {
+        "title": "audiofree",
+        "id": "dfr10",
+        "type": "Интернет-магазин",
+        "features": [
+            "Слайдеры",
+            "Спойлеры",
+            "Работающая корзина (на JS)",
+            "Ползунок для установления цены (в фильтре товаров)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/audiofreedesign/dist/html-main/index.html",
+        "imgDesktop": "img/sites-photo/audiofree/desktop",
+        "imgMobile": "img/sites-photo/audiofree/mobile",
+        "imgIcon": "img/sites-photo/audiofree/icon.svg",
+        "isDesktop": true
+    },
+    {
+        "title": "webovio",
+        "id": "wbv0",
+        "type": "Креативное агентство",
+        "features": [
+            "Анимация при прокрутке страницы"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/webovio/dist/index.html",
+        "imgDesktop": "img/sites-photo/webovio/desktop",
+        "imgMobile": "img/sites-photo/webovio/mobile",
+        "imgIcon": "img/sites-photo/webovio/icon.svg",
+        "isDesktop": false
+    },
+    {
+        "title": "yebo",
+        "id": "y3b0",
+        "type": "Интернет-магазин",
+        "features": [
+            "Параллакс эффект"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/yebo/dist/index.html",
+        "imgDesktop": "img/sites-photo/yebo/desktop",
+        "imgMobile": "img/sites-photo/yebo/mobile",
+        "imgIcon": "img/sites-photo/yebo/icon.svg",
+        "isDesktop": true
+    },
+    {
+        "title": "resource",
+        "id": "rsrc3",
+        "type": "Сайт для фотографов",
+        "features": [
+            "Анимация при прокрутке страницы"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/resource/dist/index.html",
+        "imgDesktop": "img/sites-photo/resource/desktop",
+        "imgMobile": "img/sites-photo/resource/mobile",
+        "imgIcon": "img/sites-photo/resource/icon.svg",
+        "isDesktop": true
+    }
+]
