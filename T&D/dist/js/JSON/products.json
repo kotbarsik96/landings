@@ -1,0 +1,85 @@
+{
+    "burgers": [
+        {
+            "index": "dreams",
+            "name": "Dreams",
+            "price": "9.20",
+            "img": "img/menu/burgers/dreams.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "waldo",
+            "name": "Waldo",
+            "price": "10.00",
+            "img": "img/menu/burgers/waldo.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "cali",
+            "name": "Cali",
+            "price": "8.00",
+            "img": "img/menu/burgers/cali.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "bacon-buddy",
+            "name": "Bacon Buddy",
+            "price": "9.90",
+            "img": "img/menu/burgers/bacon-buddy.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "spicy",
+            "name": "Spicy",
+            "price": "9.20",
+            "img": "img/menu/burgers/spicy.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "classic",
+            "name": "Classic",
+            "price": "8.00",
+            "img": "img/menu/burgers/classic.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+    ],
+    "sides": [
+        {
+            "index": "caesar-salad",
+            "name": "Caesar Salad",
+            "price": "5.20",
+            "img": "img/menu/sides/caesar-salad.jpg",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "greek-salad",
+            "name": "Greek Salad",
+            "price": "4.50",
+            "img": "img/menu/sides/greek-salad.jpg",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+    ],
+    "drinks": [
+        {
+            "index": "coca-cola",
+            "name": "Coca-Cola",
+            "price": "1.50",
+            "img": "img/menu/drinks/coca-cola.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "pepsi",
+            "name": "Pepsi",
+            "price": "1.50",
+            "img": "img/menu/drinks/pepsi.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        {
+            "index": "fanta",
+            "name": "Fanta",
+            "price": "1.25",
+            "img": "img/menu/drinks/fanta.png",
+            "descr": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+    ]
+}

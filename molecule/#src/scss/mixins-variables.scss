@@ -1,0 +1,40 @@
+// <SIZES>==============================================================================================
+$screenSize: 1300;
+$formRadius: 6px;
+$headerTransDur: 0.4s;
+// <SIZES>==============================================================================================
+
+// <COLORS>=============================================================================================
+$dark: #1e313b;
+$purple: #794eff;
+$orange: #ffc147;
+$green: #97e747;
+$grey: #f6f6f6;
+// <COLORS>=============================================================================================
+
+// <MIXINS>=============================================================================================
+@mixin adaptive-font($pcSize, $mobSize) {
+    $adaptSize: $pcSize - $mobSize;
+    $devAdaptSize: $adaptSize + $adaptSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize}px + #{$devAdaptSize} * (100vw - 320px) / #{$screenSize});
+    }
+    @media (min-width: 768px) {
+        font-size: calc(#{$mobSize}px + #{$adaptSize} * (100vw /#{$screenSize}));
+    }
+}
+@mixin line-height($font-size, $line-height) {
+    line-height: calc(#{$line-height} / #{$font-size} * 100%);
+}
+@mixin pre-title($bgColor){
+    @if $bgColor == $purple {
+        color: #fff;
+        background-color: rgba($bgColor, .8);
+    }
+    @if $bgColor != $purple {
+        color: #000;
+        background-color: rgba($bgColor, .6);
+    }
+    border-color: $bgColor;
+}
+// <MIXINS>=============================================================================================

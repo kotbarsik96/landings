@@ -1,0 +1,137 @@
+// <РАЗМЕРЫ>===================================================================================
+$screenSize: 1230;
+// <РАЗМЕРЫ>===================================================================================
+
+// <ЦВЕТА>=====================================================================================
+$purple: #352f77;
+$dark_purple: #252061;
+$light_purple: #524b9a;
+$red: #f55f39;
+$green: #2bca8b;
+$grey: #b8bdc9;
+// <ЦВЕТА>=====================================================================================
+
+// <МИКСИНЫ>===================================================================================
+@mixin adaptive-font($pcSize, $mobSize) {
+    $adaptSize: $pcSize - $mobSize;
+    $devAdaptSize: $adaptSize + $adaptSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize}px + #{$devAdaptSize} * (100vw - 320px) / #{$screenSize});
+    }
+    @media (min-width: 768px) {
+        font-size: calc(#{$mobSize}px + #{$adaptSize} * (100vw /#{$screenSize}));
+    }
+}
+@mixin line-height($font-size, $line-height) {
+    line-height: calc(#{$line-height} / #{$font-size} * 100%);
+}
+
+@mixin cards-list-animation($wrapperColor, $cardsAmount, $delayValue) {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $wrapperColor;
+        transition-property: height;
+        transition-duration: 1s;
+        z-index: 900;
+    }
+
+    &.__animated {
+        &::before {
+            height: 0;
+        }
+    }
+
+    @for $i from 1 through $cardsAmount {
+        &:nth-child(#{$i}) {
+            &::before {
+                transition-delay: calc(#{$i - 1} * #{$delayValue}s);
+            }
+        }
+    }
+}
+
+// включается в media-запрос
+@mixin adaptive-navs {
+    .navs {
+        &__title {
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            &::before {
+                content: "";
+                margin: 0 0.75em 0 0;
+                border-top: 10px solid #fff;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                top: 30%;
+                left: -0.75em;
+                width: 0;
+                height: 0;
+                transition: border 0.5s ease;
+            }
+        }
+        &__col {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 10em;
+        }
+        &__col.__active {
+            .navs {
+                &__title::before {
+                    border-top: 0;
+                    border-bottom: 10px solid #fff;
+                }
+            }
+            .navs-list {
+                pointer-events: auto;
+                opacity: 1;
+                visibility: visible;
+                transition-delay: 0s;
+            }
+        }
+    }
+    .navs-list {
+        pointer-events: none;
+        position: absolute;
+        top: 105%;
+        z-index: 100;
+        background: $red;
+        min-width: 100%;
+        max-height: 170px;
+        overflow: auto;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        transition-property: opacity, visibility;
+        transition-duration: 0.5s;
+        transition-delay: 0s, 0.5s;
+
+        &__item {
+            margin: 0 0 15px 0;
+        }
+    }
+}
+@mixin container($widthVal) {
+    max-width: #{$widthVal}px;
+
+    @media (max-width: #{$widthVal}px) {
+        width: auto;
+        padding: 0 10px;
+        margin: 0;
+    }
+}
+// <МИКСИНЫ>===================================================================================

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @@include('html-snippets/head.html')
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <title>Molecule</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo">
+                    <a href="index.html"><img src="img/icons/logo.svg" alt="logo"></a>
+                </div>
+                <nav class="header__nav">
+                    <div class="header__nav-button burger">
+                        <span class="burger__item burger__item--1"></span>
+                        <span class="burger__item burger__item--2"></span>
+                        <span class="burger__item burger__item--3"></span>
+                    </div>
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Home</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">About</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Pricing</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Open positions</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Blog</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Template</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="button button--dark">
+                    <a href="#">Buy now</a>
+                </button>
+            </div>
+        </header>
+        <main class="main">
+            <section class="greeting dark-block">
+                <div class="greeting__container">
+                    <div class="greeting__about">
+                        <div class="greeting__text-block">
+                            <h3 class="greeting__title">
+                                Molecule is a SaaS marketing template that's <span class="colored-text">easy to
+                                    modify</span>.
+                            </h3>
+                            <p class="greeting__text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                                elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+                                commodo diam libero vitae erat.
+                            </p>
+                            <form class="greeting__form form">
+                                <div class="form__wrapper">
+                                    <input class="form__input" type="email" placeholder="Enter your email">
+                                    <input class="button form__button" type="submit" value="Sign Up"
+                                        onclick="event.preventDefault()">
+                                </div>
+                                <p class="form__info">
+                                    By clicking Sign Up you're confirming that you agree with our
+                                    <span class="colored-text"><a href="#">Terms and Conditions</a></span>.
+                                </p>
+                            </form>
+                        </div>
+                        <div class="greeting__image">
+                            <img src="img/greeting/webpages.png" alt="wep-pages">
+                        </div>
+                    </div>
+                    <div class="greeting__logos">
+                        <p class="greeting__logos-about">
+                            Used by the leading SaaS companies of tomorrow.
+                        </p>
+                        <ul class="greeting__logos-list">
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/hooq.svg" alt="hooq">
+                            </li>
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/studiocai.svg" alt="Studio Cai">
+                            </li>
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/stockholm.svg" alt="Stockholm">
+                            </li>
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/chillindustries.svg" alt="Chill Industries">
+                            </li>
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/gkdc.svg" alt="gkdc">
+                            </li>
+                            <li class="greeting__logos-item">
+                                <img src="img/greeting/glassware.svg" alt="glassware">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="features-block titled-block">
+                <div class="features-block__container">
+                    <div class="features-block__images titled-block__content">
+                        <div class="features-block__image">
+                            <img src="img/titled-blocks/features/1.png" alt="Room">
+                        </div>
+                        <div class="features-block__image">
+                            <img src="img/titled-blocks/features/2.png" alt="Office">
+                        </div>
+                    </div>
+                    <div class="features-block__title-block titled-block__title">
+                        <div class="features-block__text-block">
+                            <div class="text-block__pre-title">
+                                Features
+                            </div>
+                            <h4 class="text-block__title">
+                                See how easy it is to <span class="colored-text">edit Molecule</span> to your liking.
+                            </h4>
+                            <p class="text-block__text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                                elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+                                commodo diam libero vitae erat.
+                            </p>
+                        </div>
+                        <ul class="features-block__features-list">
+                            <li class="features-block__features-item text-block">
+                                <h6 class="text-block__title icon-pages">Pages you'll use</h6>
+                                <p class="text-block__text">
+                                    Molecule doesn't come with 200+ page layout — it comes with the pages yo'll actually
+                                    use.
+                                </p>
+                            </li>
+                            <li class="features-block__features-item text-block">
+                                <h6 class="text-block__title icon-image">Native image effects</h6>
+                                <p class="text-block__text">
+                                    Instead of having to add effects to images in an image editor, simply replace the
+                                    existing images and all effects will appear.
+                                </p>
+                            </li>
+                            <li class="features-block__features-item text-block">
+                                <h6 class="text-block__title icon-typography">Global typography</h6>
+                                <p class="text-block__text">
+                                    Change the body font once and every single line of text on the page will change.
+                                </p>
+                            </li>
+                            <li class="features-block__features-item text-block">
+                                <h6 class="text-block__title icon-colors">
+                                    Global colors
+                                </h6>
+                                <p class="text-block__text">
+                                    Change the global color swatches and see your colors change everywhere.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="stats-block titled-block">
+                <div class="stats-block__container">
+                    <div class="stats-block__text-block titled-block__title text-block">
+                        <div class="text-block__pre-title">
+                            Stats
+                        </div>
+                        <h4 class="text-block__title">
+                            Teams all over the place have already used Molecule to get <span
+                                class="colored-text">stunning results</span>.
+                        </h4>
+                    </div>
+                    <div class="stats-block__stats-text titled-block__content text-block">
+                        <p class="text-block__text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+                            commodo diam libero vitae erat.
+                        </p>
+                        <ul class="stats-block__numbers-list">
+                            <li class="stats-block__number-block">
+                                <div class="stats-block__number colored-text">
+                                    87%
+                                </div>
+                                <p class="stats-block__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </li>
+                            <li class="stats-block__number-block">
+                                <div class="stats-block__number colored-text">
+                                    99%
+                                </div>
+                                <p class="stats-block__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="team titled-block">
+                <div class="team__container">
+                    <div class="team__text-block titled-block__title text-block">
+                        <div class="text-block__pre-title">
+                            Team
+                        </div>
+                        <h4 class="text-block__title">
+                            Meet the <span class="colored-text">talented team</span> behind the molecule SaaS template.
+                        </h4>
+                        <p class="text-block__text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+                            commodo diam libero vitae erat.
+                        </p>
+                        <a href="#" class="button button--colored">Meet the team</a>
+                    </div>
+                    <ul class="team__images-list titled-block__content">
+                        <li class="team__images-item">
+                            <img src="img/titled-blocks/team/1.png" alt="Teammate">
+                        </li>
+                        <li class="team__images-item">
+                            <img src="img/titled-blocks/team/2.png" alt="Teammate">
+                        </li>
+                        <li class="team__images-item">
+                            <img src="img/titled-blocks/team/3.png" alt="Teammate">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="see-more dark-block">
+                <div class="see-more__container">
+                    <div class="see-more__content">
+                        <div class="see-more__image">
+                            <img src="img/icons/molecules.svg" alt="molecules">
+                        </div>
+                        <div class="see-more__text-block">
+                            <h4 class="see-more__title">
+                                Think you've seen enough?
+                            </h4>
+                            <p class="see-more__text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                                elementum tristique.
+                            </p>
+                            <div class="see-more__buttons">
+                                <a class="button button--colored" href="#">
+                                    Buy molecule
+                                </a>
+                                <a class="button" href="#">
+                                    Read more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="process-block titled-block">
+                <div class="process-block__container">
+                    <div class="process-block__text-block titled-block__title text-block">
+                        <div class="text-block__pre-title">
+                            Process
+                        </div>
+                        <h4 class="text-block__title">
+                            What steps are required to build a SaaS marketing site using the molecule template?
+                        </h4>
+                        <p class="text-block__text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                            elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+                            commodo diam libero vitae erat.
+                        </p>
+                        <a href="#" class="button button--dark">Get molecule</a>
+                    </div>
+                    <div class="process-block__content titled-block__content">
+                        <ul class="process-block__list">
+                            <li class="process-block__item">
+                                <div class="process-block__item-icon icon-cart"></div>
+                                <div class="process-block__item-text-block">
+                                    <h6 class="text-block__title">Get molecule</h6>
+                                    <p class="text-block__text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                                        in eros elementum tristique.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="process-block__item">
+                                <div class="process-block__item-icon icon-colors"></div>
+                                <div class="process-block__item-text-block">
+                                    <h6 class="text-block__title">Edit fonts, colors, images & text</h6>
+                                    <p class="text-block__text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                                        in eros elementum tristique.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="process-block__item">
+                                <div class="process-block__item-icon icon-cloud"></div>
+                                <div class="process-block__item-text-block">
+                                    <h6 class="text-block__title">Publish!</h6>
+                                    <p class="text-block__text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                                        in eros elementum tristique.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="person-slider-block" id="slider-example">
+                <div class="person-slider-block__container">
+                    <div class="person-slider swiper">
+                        <div class="person-slider__wrapper swiper-wrapper">
+                            <div class="person-slider__slide swiper-slide">
+                                <div class="person-slider__slide-content">
+                                    <div class="person-slider__logo">
+                                        <img src="img/person-slider/chillindustries.svg" alt="chill industries">
+                                    </div>
+                                    <div class="person-slider__text">
+                                        "Using molecule for our web was the best decision we made last year — and we
+                                        made a
+                                        ton of great decisions, trust me!"
+                                    </div>
+                                    <div class="person-slider__image">
+                                        <img src="img/slider/person.png" alt="Mark Watney">
+                                    </div>
+                                    <div class="person-slider__info">
+                                        <p>Mark Watney</p>
+                                        <p>Marketing Director, Chill Industries</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="person-slider__slide swiper-slide">
+                                <div class="person-slider__slide-content">
+                                    <div class="person-slider__logo">
+                                        <img src="img/person-slider/hooq.svg" alt="hooq">
+                                    </div>
+                                    <div class="person-slider__text">
+                                        "Using molecule for our web was the best decision we made last year — and we
+                                        made a
+                                        ton of great decisions, trust me!"
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequatur
+                                        vero sunt perferendis deserunt autem atque eum voluptas distinctio nobis
+                                        delectus
+                                        exercitationem corporis mollitia quasi, ab eligendi rerum incidunt adipisci!
+                                    </div>
+                                    <div class="person-slider__image">
+                                        <img src="img/titled-blocks/blog/author-1.png" alt="Dwight Schrute">
+                                    </div>
+                                    <div class="person-slider__info">
+                                        <p>Dwight Schrute</p>
+                                        <p>Marketing Director, hooq</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="person-slider__slide swiper-slide">
+                                <div class="person-slider__slide-content">
+                                    <div class="person-slider__logo">
+                                        <img src="img/person-slider/stockholm.svg" alt="stockholm">
+                                    </div>
+                                    <div class="person-slider__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequatur
+                                        vero sunt perferendis deserunt autem atque eum voluptas distinctio nobis
+                                        delectus
+                                        exercitationem corporis mollitia quasi, ab eligendi rerum incidunt adipisci!
+                                    </div>
+                                    <div class="person-slider__image">
+                                        <img src="img/titled-blocks/blog/author-2.png" alt="Lexus Simonis">
+                                    </div>
+                                    <div class="person-slider__info">
+                                        <p>Lexus Simonis</p>
+                                        <p>Marketing Director, Stockholm</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="person-slider__pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="signup-block">
+                <div class="signup-block__container">
+                    <div class="signup-block__content">
+                        <div class="signup-block__text-block">
+                            <h4 class="signup-block__title">
+                                Don't miss out!
+                            </h4>
+                            <p class="signup-block__text">
+                                Sign-up & we'll let you know as soon as we have something to show off. (Don't worry, we
+                                don't spam).
+                            </p>
+                        </div>
+                        <form class="form signup-block__form">
+                            <div class="form__wrapper">
+                                <input class="form__input" placeholder="Enter your email" type="email">
+                                <input class="button button--dark form__button" type="submit"
+                                    onclick="event.preventDefault()" value="Sign Up">
+                            </div>
+                            <p class="form__info">
+                                By clicking Sign Up you're confirming that you agree with our <span
+                                    class="colored-text">Terms and Conditions</span>.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="blog-section">
+                <div class="blog-section__container">
+                    <div class="blog-section__text-block">
+                        <div class="text-block__pre-title">
+                            Blog
+                        </div>
+                        <h4 class="text-block__title">
+                            The <span class="colored-text">latest news</span> from Molecule.
+                        </h4>
+                        <div class="text-block__text">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                            <a href="#" class="button button--dark">View all</a>
+                        </div>
+                    </div>
+                    <ul class="blog-list">
+                        <li class="blog-list__item">
+                            <div class="blog-list__item-image">
+                                <img src="img/titled-blocks/blog/preview-1.png" alt="Preview 1">
+                            </div>
+                            <div class="blog-list__item-text-block text-block">
+                                <h6 class="text-block__title">
+                                    How to drive sales in SaaS
+                                </h6>
+                                <p class="text-block__text">
+                                    Vestibulum sit amet urna turpis. Mauris euismod elit et nisi ultrices, ut faucibus
+                                    orci tincidunt.
+                                </p>
+                            </div>
+                            <div class="blog-list__item-info blog-info">
+                                <div class="blog-info__author-image">
+                                    <img src="img/titled-blocks/blog/author-1.png" alt="Author 1">
+                                </div>
+                                <div class="blog-info__author-info">
+                                    <p>Dwight Schrute</p>
+                                    <p>January 25, 2022</p>
+                                </div>
+                                <div class="blog-info__timing">
+                                    28 min read
+                                </div>
+                            </div>
+                        </li>
+                        <li class="blog-list__item">
+                            <div class="blog-list__item-image">
+                                <img src="img/titled-blocks/blog/preview-2.png" alt="Preview 2">
+                            </div>
+                            <div class="blog-list__item-text-block text-block">
+                                <h6 class="text-block__title">
+                                    Hiring the right talent
+                                </h6>
+                                <p class="text-block__text">
+                                    Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus
+                                    congue et, vulputate ut ligula.
+                                </p>
+                            </div>
+                            <div class="blog-list__item-info blog-info">
+                                <div class="blog-info__author-image">
+                                    <img src="img/titled-blocks/blog/author-2.png" alt="Author 2">
+                                </div>
+                                <div class="blog-info__author-info">
+                                    <p>Lexus Simonis</p>
+                                    <p>January 25, 2022</p>
+                                </div>
+                                <div class="blog-info__timing">
+                                    21 min read
+                                </div>
+                            </div>
+                        </li>
+                        <li class="blog-list__item">
+                            <div class="blog-list__item-image">
+                                <img src="img/titled-blocks/blog/preview-3.png" alt="Preview 3">
+                            </div>
+                            <div class="blog-list__item-text-block text-block">
+                                <h6 class="text-block__title">
+                                    Is remote work for you? (Yes it is)
+                                </h6>
+                                <p class="text-block__text">
+                                    Duis tristique sed lorem a vestibulum. Cras commodo consequat orci, in convallis
+                                    risus egestas non.
+                                </p>
+                            </div>
+                            <div class="blog-list__item-info blog-info">
+                                <div class="blog-info__author-image">
+                                    <img src="img/titled-blocks/blog/author-3.png" alt="Author 3">
+                                </div>
+                                <div class="blog-info__author-info">
+                                    <p>Doug Howell</p>
+                                    <p>January 25, 2022</p>
+                                </div>
+                                <div class="blog-info__timing">
+                                    29 min read
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="start-designing">
+                <div class="start-designing__container">
+                    <div class="start-designing__text-block">
+                        <h2 class="start-designing__title">
+                            Ready to start designing?
+                        </h2>
+                        <p class="start-designing__text">
+                            Molecule is available today!
+                        </p>
+                    </div>
+                    <div class="start-designing__button">
+                        <button class="button">
+                            Get Molecule
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__top">
+                    <div class="footer__logo">
+                        <a href="#"><img src="img/icons/logo.svg" alt="logo"></a>
+                    </div>
+                    <nav class="footer__nav">
+                        <ul class="footer__nav-list">
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Home</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">About</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Pricing</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Open positions</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Blog</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="footer__socials socials-list">
+                        <li class="socials-list__item">
+                            <a href="https://instagram.com" class="socials-list__link icon-inst"></a>
+                        </li>
+                        <li class="socials-list__item">
+                            <a href="https://twitter.com" class="socials-list__link icon-twt"></a>
+                        </li>
+                        <li class="socials-list__item">
+                            <a href="https://ru.linkedin.com/" class="socials-list__link icon-in"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <span>© Molecule, LLC. All rights reserved. Powered by</span>
+                        <span class="colored-text">Webflow .</span>
+                    </div>
+                    <nav class="footer__nav">
+                        <ul class="footer__nav-list">
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Licensing</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Privacy Policy</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Terms & conditions</a>
+                            </li>
+                            <li class="footer__nav-item">
+                                <a href="#" class="footer__nav-link">Cookie policy</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

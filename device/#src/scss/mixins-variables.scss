@@ -1,0 +1,34 @@
+// <VARIABLES>==========================================================================================
+// sizes //
+$screenSize: 1200;
+$lessPaddings: 799;
+
+// colors //
+$basic-black: #000;
+$basic-dark: #363636;
+$basic-white: #fff;
+$basic-grey: #464646;
+$basic-grey-light: #e5e5e5;
+$basic-half-grey: #7e7e7e;
+$special-yellow: #f7e296;
+$special-green: #91c92f;
+$special-yellow-dark: #f0c52e;
+$white-30: rgba(255, 255, 255, 0.3);
+$white-60: rgba(255, 255, 255, 0.6);
+// <VARIABLES>==========================================================================================
+
+// <MIXINS>=============================================================================================
+@mixin adaptive-font($pcSize, $mobSize) {
+    $adaptSize: $pcSize - $mobSize;
+    $devAdaptSize: $adaptSize + $adaptSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize}px + #{$devAdaptSize} * (100vw - 320px) / #{$screenSize});
+    }
+    @media (min-width: 768px) {
+        font-size: calc(#{$mobSize}px + #{$adaptSize} * (100vw /#{$screenSize}));
+    }
+}
+@mixin line-height($font-size, $line-height) {
+    line-height: calc(#{$line-height} / #{$font-size} * 100%);
+}
+// <MIXINS>=============================================================================================
