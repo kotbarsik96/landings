@@ -1,0 +1,33 @@
+$screenSize: 1325;
+$screenPadding: 10;
+$screenPadding_1: 65;
+$screenPadding_2: 95;
+
+@mixin container-small($num, $paddingValue){
+    [class*="container--small-#{$num}"] {
+        padding-right: #{$paddingValue}px;
+        padding-left: #{$paddingValue}px;
+        @media (max-width: #{$screenSize - $paddingValue - 1}px) {
+            padding-right: #{$screenPadding}px;
+            padding-left: #{$screenPadding}px;
+        }
+    }
+}
+@mixin adaptive-font($pcSize, $mobSize) {
+    $adaptSize: $pcSize - $mobSize;
+    $devAdaptSize: $adaptSize + $adaptSize * 0.7;
+    @media (max-width: 767px){
+        font-size: calc(#{$mobSize}px + #{$devAdaptSize} * (100vw - 320px) / #{$screenSize});
+    }
+    @media (min-width: 768px){
+        font-size: calc(#{$mobSize}px + #{$adaptSize} * (100vw/#{$screenSize}));
+    }
+}
+@mixin fz-lh($font-size, $line-height) {
+    font-size: #{$font-size}px;
+    line-height: calc(#{$line-height} / #{$font-size} * 100%);
+}
+@mixin general-font($font-size: 11, $line-height: 34, $letter-spacing: 2.75){
+    @include fz-lh($font-size, $line-height);
+    letter-spacing: #{$letter-spacing}px;
+}
