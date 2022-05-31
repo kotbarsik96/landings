@@ -92,7 +92,7 @@
             "Работающая корзина (на JS)",
             "Ползунок для установления цены (в фильтре товаров)"
         ],
-        "url": "https://kotbarsik96.github.io/sites/audiofreedesign/dist/html-main/index.html",
+        "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/index.html",
         "imgDesktop": "img/sites-photo/audiofree/desktop",
         "imgMobile": "img/sites-photo/audiofree/mobile",
         "imgIcon": "img/sites-photo/audiofree/icon.svg",
@@ -135,6 +135,19 @@
         "imgDesktop": "img/sites-photo/resource/desktop",
         "imgMobile": "img/sites-photo/resource/mobile",
         "imgIcon": "img/sites-photo/resource/icon.svg",
+        "isDesktop": true
+    },
+    {
+        "title": "vantage",
+        "id": "v4nt4g3",
+        "type": "Креативное агентство",
+        "features": [
+            "Анимация при прокрутке страницы"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/vantage/dist/index.html",
+        "imgDesktop": "img/sites-photo/vantage/desktop",
+        "imgMobile": "img/sites-photo/vantage/mobile",
+        "imgIcon": "img/sites-photo/vantage/icon.svg",
         "isDesktop": true
     }
 ]
