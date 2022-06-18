@@ -2320,7 +2320,7 @@ $searchBorderRadius: 23px;
             border-radius: 0 0 0 9px;
         }
     }
-    &__title--text {
+    &__title-text {
         padding: 35px 25px;
         box-sizing: border-box;
     }
@@ -2334,21 +2334,23 @@ $searchBorderRadius: 23px;
         border-radius: 0 9px 9px 9px;
     }
 
-    &__content--text {
+    &__content-text {
         @include line-height(16, 30);
         color: #494949;
-        margin: 0 0 50px 0;
-        &:last-child {
-            margin: 0;
-        }
     }
-    &__content--subtitle {
+    &__content-title {
         font-weight: 700;
         font-size: 22px;
+        &:not(:last-child){
+            margin: 0 0 50px 0;
+        }
     }
-    &__content--paragraph {
+    &__content-paragraph {
         font-weight: 400;
         font-size: 16px;
+        &:not(:last-child){
+            margin: 0 0 50px 0;
+        }
     }
 }
 .tab--vertical {
@@ -2460,10 +2462,16 @@ $searchBorderRadius: 23px;
         transition-delay: 0, 0, 0, $transToggleDuration;
     }
 
-    &__content--paragraph {
-        margin: 0 0 45px 0;
-        &:last-child {
-            margin: 0 0 0 0;
+    &__content-title{
+        font-weight: 700;
+        font-size: 18px;
+        &:not(:last-child){
+            margin: 0 0 45px 0;
+        }
+    }
+    &__content-paragraph {
+        &:not(:last-child){
+            margin: 0 0 45px 0;
         }
     }
 }

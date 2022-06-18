@@ -46,7 +46,7 @@
                         </div>
                      </div>
                      <img
-                        :src="'/img/products/' + product.images[currentImageIndex]"
+                        :src="'../img/products/' + product.images[currentImageIndex]"
                         alt="Фото товара"
                      />
                   </div>
@@ -58,7 +58,7 @@
                         :key="index"
                      >
                         <img
-                           :src="'/img/products/' + product.images[index]"
+                           :src="'../img/products/' + product.images[index]"
                            @click="currentImageIndex = index"
                            alt="Фото товара"
                         />
@@ -216,16 +216,21 @@
             <div class="title__top">Что стоит знать</div>
             <div class="title__bottom title__bold">при выборе наушников</div>
          </h3>
-         <spoiler-tab-wrapper v-if="productInfo" class="container" :titles="[ 'Характеристики:', 'Описание товара:' ]" :tabParams="{ isVertical: true }">
+         <spoiler-tab-wrapper
+            v-if="productInfo"
+            class="container"
+            :titles="[ { text: 'Характеристики:', contentContainerClass: 'specs' }, 'Описание товара:' ]"
+            :tabParams="{ isVertical: true }"
+         >
             <template #0>
                <div class="specs__item" v-for="spec in productSpecs" :key="spec.name">
-                  <div class="specs__name"> {{ spec.name }} </div>
-                  <div class="specs__content"> {{ spec.text }} </div>
+                  <div class="specs__name">{{ spec.name }}</div>
+                  <div class="specs__content">{{ spec.text }}</div>
                </div>
             </template>
             <template #1>
-               <h5> {{ productDescr.title }} </h5>
-               <p v-for="(text, id) in productDescr.paragraphs" :key="id"> {{ text }} </p>
+               <h5>{{ productDescr.title }}</h5>
+               <p v-for="(text, id) in productDescr.paragraphs" :key="id">{{ text }}</p>
             </template>
          </spoiler-tab-wrapper>
          <div class="product-page__spoiler-tab-nocontent" v-else></div>
@@ -286,15 +291,15 @@ export default {
       popup() {
          return PopupNotification;
       },
-      productInfo(){
+      productInfo() {
          return this.productsInfo[this.vendorCode];
       },
-      productSpecs(){
+      productSpecs() {
          return this.productInfo.specs;
       },
-      productDescr(){
+      productDescr() {
          return this.productInfo.description;
-      }
+      },
    },
    methods: {
       ...mapMutations(["addProductCardComponent", "addNotification"]),

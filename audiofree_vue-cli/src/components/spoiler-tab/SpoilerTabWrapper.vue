@@ -1,11 +1,19 @@
 <template>
    <div class="tab-spoiler__container">
-      <info-spoiler v-if="mediaQueries[spoilerMedia]" :params="spoilerParams" :titles="titles">
+      <info-spoiler
+         v-if="mediaQueries[spoilerMedia]"
+         :params="spoilerParams"
+         :titles="titles"
+      >
          <template v-for="slotNum in slots" :key="slotNum" #[slotNum]>
             <slot :name="slotNum"></slot>
          </template>
       </info-spoiler>
-      <info-tab v-else :params="tabParams" :titles="titles">
+      <info-tab
+         v-else
+         :params="tabParams"
+         :titles="titles"
+      >
          <template v-for="slotNum in slots" :key="slotNum" #[slotNum]>
             <slot :name="slotNum"></slot>
          </template>
@@ -44,6 +52,7 @@ export default {
       titles: {
          type: Array,
          default: [],
+         // пример: [ 'Описание товара:', { text: 'Характеристики:', contentContainerClass: 'specs' } ]
       },
    },
    data() {

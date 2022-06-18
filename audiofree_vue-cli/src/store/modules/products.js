@@ -43,7 +43,7 @@ export default {
     },
     actions: {
         async loadProducts({ commit }) {
-            const query = await fetch("/json/products.json");
+            const query = await fetch("/sites/audiofree_vue-cli/dist/json/products.json");
             const products = await query.json();
             commit("modifyAndGetProducts", products);
         }

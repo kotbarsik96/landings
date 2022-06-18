@@ -1,8 +1,11 @@
 <template>
    <div class="spoiler">
       <div class="spoiler__item" v-for="(title, index) in titles" :key="index" ref="spoilerNode">
-         <div class="spoiler__title" @click="toggleSpoiler(index)">{{ title }}</div>
-         <div class="spoiler__content">
+         <div
+            class="spoiler__title"
+            @click="toggleSpoiler(index)"
+         >{{ typeof title === "string" ? title : title.text }}</div>
+         <div class="spoiler__content" ref="contentContainer">
             <slot :name="index"></slot>
          </div>
       </div>
@@ -10,25 +13,32 @@
 </template>
 
 <script>
+import shared from "./shared";
+
 export default {
    name: "InfoSpoiler",
    props: {
       params: Object,
-      titles: Array
+      titles: Array,
    },
    data() {
       return {
          spoilerNodesData: [],
+         titleClassName: "spoiler__content-title",
+         paragraphClassName: "spoiler__content-paragraph",
       };
    },
    methods: {
       getSpoilerNodesData() {
-         this.spoilerNodesData = this.$refs.spoilerNode.map((node) => {
-            const titleNode = node.querySelector(".spoiler__title");
-            const contentNode = node.querySelector(".spoiler__content");
-            const height = contentNode.offsetHeight;
+         return new Promise((resolve) => {
+            this.spoilerNodesData = this.$refs.spoilerNode.map((node) => {
+               const titleNode = node.querySelector(".spoiler__title");
+               const contentNode = node.querySelector(".spoiler__content");
+               const height = contentNode.offsetHeight;
 
-            return { node, titleNode, contentNode, height };
+               resolve();
+               return { node, titleNode, contentNode, height };
+            });
          });
       },
       toggleSpoiler(number) {
@@ -55,11 +65,11 @@ export default {
             this.hideSpoiler(spoilerData)
          );
       },
+      setContentClassNames: shared.setContentClassNames,
    },
    mounted() {
-      this.getSpoilerNodesData();
-      this.$nextTick().then(this.hideAllSpoilers);
-      console.log(this.$slots);
+      this.$nextTick().then(this.getSpoilerNodesData).then(this.hideAllSpoilers);
+      this.setContentClassNames("spoiler");
    },
 };
 </script>
