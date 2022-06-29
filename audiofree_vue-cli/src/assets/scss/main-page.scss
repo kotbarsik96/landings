@@ -100,7 +100,7 @@
             height: 100%;
             object-fit: contain;
         }
-        @media (max-width: 719px){
+        @media (max-width: 719px) {
             width: 30%;
             height: 30%;
         }
@@ -144,7 +144,7 @@
 .page-reference {
     padding: 120px 0 105px 0;
 
-    .swiper-wrapper{
+    .swiper-wrapper {
         @extend .cards-list;
         flex-wrap: nowrap !important;
     }
@@ -153,20 +153,20 @@
         margin-bottom: 58px;
     }
 
-    &__flex{
+    &__flex {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
     }
 
-    &__devices-list.product-card{
+    &__devices-list.product-card {
         flex: 0 0 300px;
         align-self: center;
     }
-    &__devices{
+    &__devices {
         flex: 1 1 auto;
-        .product-card{
-            &__bottom{
+        .product-card {
+            &__bottom {
                 transform: scale(0.9);
                 bottom: -30px;
             }
@@ -189,26 +189,26 @@
         }
     }
 
-    @media (max-width: 1199px){
+    @media (max-width: 1199px) {
         &__title.title {
             margin-bottom: 23px;
         }
 
-        &__devices-list.product-card{
+        &__devices-list.product-card {
             flex: 0 0 100%;
         }
-        &__devices{
+        &__devices {
             flex: 1 1 100%;
             min-width: 0;
 
-            .cards-list{
-                @media (min-width: 767px){
+            .cards-list {
+                @media (min-width: 767px) {
                     justify-content: space-around;
                 }
             }
 
-            .product-card{
-                &__bottom{
+            .product-card {
+                &__bottom {
                     transform: scale(0.9);
                     bottom: -30px;
                 }
@@ -227,6 +227,10 @@
 // <PAGE-REFERENCE>=========================================================================
 
 // <DEVICES-LIST, DEVICES-TOGGLE>===========================================================
+.devices-toggle.page-reference__flex{
+    justify-content: flex-start;
+}
+
 .devices-list {
     display: flex;
     flex-wrap: wrap;
@@ -279,7 +283,7 @@
         font-weight: 500;
         display: flex;
         align-items: center;
-        @media (max-width: 499px){
+        @media (max-width: 499px) {
             @include adaptive-font(14, 12);
         }
         &::before {
@@ -445,7 +449,7 @@
         align-items: flex-end;
         justify-content: center;
         position: relative;
-        @media (min-width: 1200px){
+        @media (min-width: 1200px) {
             min-height: 486px;
         }
     }
@@ -555,8 +559,8 @@
 // <OFFER-BLOCK>============================================================================
 
 // <TEST-OFFER>=============================================================================
-.test-offer{
-    &__background{
+.test-offer {
+    &__background {
         margin-bottom: 30px;
     }
 }
@@ -844,12 +848,12 @@
 // <ADVANTAGES-BLOCK>=======================================================================
 .advantages-block {
     padding: 100px 0 70px 0;
-    @media (max-width: 767px){
+    @media (max-width: 767px) {
         padding: 55px 0;
     }
     color: #525252;
 
-    &__title{
+    &__title {
         margin-bottom: 65px;
     }
 
@@ -869,13 +873,13 @@
         justify-content: space-between;
         .info-card {
             flex: 0 0 300px;
-            
-            &__image{
+
+            &__image {
                 width: 90px;
                 height: 90px;
                 margin: 0 auto;
             }
-            &__message{
+            &__message {
                 text-align: center;
             }
         }

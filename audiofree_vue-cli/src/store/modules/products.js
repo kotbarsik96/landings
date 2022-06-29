@@ -1,17 +1,14 @@
 function modifyProducts(loadedProducts) {
-    const modifiedProducts = {};
-    Object.assign(modifiedProducts, loadedProducts);
+    loadedProducts.forEach(prod => {
+        if (!prod.refProducts || prod.refProducts.length === 0) prod.refProducts = createRefs(prod.vendorCode);
+        prod.sale = defineSale(prod);
+    });
 
-    for (let vendorCode in modifiedProducts) {
-        const prod = modifiedProducts[vendorCode];
-        if (!prod.refProducts || prod.refProducts.length === 0) prod.refProducts = createRefs(vendorCode);
-    }
-
-    return modifiedProducts;
+    return loadedProducts;
 
     function createRefs(vendorCode) {
         const refs = [];
-        const otherCodes = Object.keys(modifiedProducts);
+        const otherCodes = loadedProducts.map(prod => prod.vendorCode);
         const currentIndex = otherCodes.indexOf(vendorCode);
         for (let i = 0; i < 4; i++) {
             if (i < 2) {
@@ -33,17 +30,25 @@ function modifyProducts(loadedProducts) {
             }
         }
     }
+    function defineSale(prod) {
+        const oldPrice = prod["old-price"];
+        const hasDiscount = typeof oldPrice === "number" && oldPrice > 0;
+        const hasWrongSaleValue = prod.sale === "нет" || !prod.sale;
+
+        if (hasDiscount && hasWrongSaleValue) return "со скидкой";
+        return prod.sale || "нет";
+    }
 }
 
 export default {
     state: {
-        products: {},
+        products: [],
         productCards: [],
         maxProductRating: 5
     },
     actions: {
         async loadProducts({ commit }) {
-            const query = await fetch("/sites/audiofree_vue-cli/dist/json/products.json");
+            const query = await fetch("/json/products.json");
             const products = await query.json();
             commit("modifyAndGetProducts", products);
         }
@@ -53,7 +58,7 @@ export default {
             loadedProducts = modifyProducts(loadedProducts);
             state.products = loadedProducts;
         },
-        addProductCardComponent(state, component){
+        addProductCardComponent(state, component) {
             state.productCards.push(component);
         }
     },

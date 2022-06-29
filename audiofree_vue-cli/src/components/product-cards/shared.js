@@ -20,7 +20,8 @@ export default {
     computed: {
         ...mapGetters(["products", "productCards"]),
         product() {
-            return this.products[this.vendorCode];
+            const prodArrayFiltered = this.products.filter(prod => prod.vendorCode === this.vendorCode);
+            return prodArrayFiltered[0];
         },
     },
     methods: {

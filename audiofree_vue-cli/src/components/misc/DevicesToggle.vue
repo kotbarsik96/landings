@@ -10,27 +10,29 @@
          >
             <div :class="`devices-list__text __icon-${device.icon}`">{{ device.title }}</div>
          </div>
-         <router-link to="/catalogue" class="devices-list__item devices-list__item--more">
+         <router-link
+            :to="{ name: 'catalogue', params: { pageNumber: 1 } }"
+            class="devices-list__item devices-list__item--more"
+         >
             <div class="devices-list__text">Смотреть больше моделей</div>
          </router-link>
       </div>
-      <mobile-slider class="page-reference__devices" v-if="isMobileSlider" :slideClassName="slideClassName">
-         <template
-            v-for="(vendorCode, index) in selectedDeviceInfo.vendorCodes"
-            :key="vendorCode + index"
-            #[vendorCode]
+      <transition name="mobslider-transition" mode="out-in">
+         <mobile-slider
+            class="page-reference__devices"
+            :slideClassName="slideClassName"
+            :media="767"
+            :key="selectedDeviceName"
          >
-            <component :is="productCardComponent" :vendorCode="vendorCode"></component>
-         </template>
-      </mobile-slider>
-      <div class="cards-list page-reference__devices" v-else>
-         <template
-            v-for="(vendorCode, index) in selectedDeviceInfo.vendorCodes"
-            :key="vendorCode + index"
-         >
-            <component :is="productCardComponent" :vendorCode="vendorCode"></component>
-         </template>
-      </div>
+            <template
+               v-for="vendorCode in selectedDeviceInfo.vendorCodes"
+               :key="vendorCode"
+               #[vendorCode]
+            >
+               <component :is="productCardComponent" :vendorCode="vendorCode"></component>
+            </template>
+         </mobile-slider>
+      </transition>
    </div>
 </template>
 
@@ -58,8 +60,8 @@ export default {
       },
       slideClassName: {
          type: String,
-         default: "card-wrapper"
-      }
+         default: "card-wrapper",
+      },
    },
    data() {
       return {
@@ -82,3 +84,32 @@ export default {
    },
 };
 </script>
+
+<style scoped lang="scss">
+$devListTransDur: 0.5s;
+
+.devices-list {
+   &__item {
+      transition-property: border, box-shadow;
+      transition-duration: $devListTransDur;
+   }
+   &__item > &__text {
+      transition-property: color;
+      transition-duration: $devListTransDur;
+   }
+}
+.mobslider-transition {
+   &-enter-from,
+   &-leave-to {
+      opacity: 0;
+   }
+   &-enter-to,
+   &-leave-from {
+      opacity: 1;
+   }
+   &-enter-active,
+   &-leave-active {
+      transition: all $devListTransDur;
+   }
+}
+</style>

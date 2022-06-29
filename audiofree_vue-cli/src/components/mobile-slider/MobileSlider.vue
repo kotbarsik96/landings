@@ -4,6 +4,7 @@
       :class="{ 'cards-list': !mediaQueries[media] }"
       :slidesPerView="1"
       :breakpoints="{ 500: { slidesPerView: 2 } }"
+      :style="{ 'padding-bottom': mediaQueries[media] ? '50px' : '0' }"
       @swiper="initMobileSlider"
    >
       <component
@@ -36,7 +37,7 @@ export default {
          type: Number,
          default: 767,
       },
-      slideClassName: ""
+      slideClassName: String,
    },
    data() {
       return {

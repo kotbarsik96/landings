@@ -8,7 +8,7 @@
                   <div class="menu-button__item menu-button__item-2"></div>
                   <div class="menu-button__item menu-button__item-3"></div>
                </div>
-               <search-field class="header-main__search"></search-field>
+               <search-field :platform="platform" :isHideable="true" class="header-main__search"></search-field>
             </div>
             <router-link :to="{ name: 'home' }" class="header-main__logo">AudioFree</router-link>
             <div class="header-main__icons">
@@ -111,22 +111,19 @@
                      <div class="contacts-block__info">8 111 111-11-11</div>
                   </div>
                </div>
-               <search-field class="header-main__search"></search-field>
+               <search-field :platform="platform" :isHideable="false" class="header-main__search"></search-field>
                <div class="header-main__icons">
                   <div class="header-main__icon icon-circle">
                      <div class="icon-circle__item __icon-judge"></div>
                   </div>
-                  <div class="header-main__icon icon-circle icon-circle--favorites-icon">
-                     <router-link
-                        :to="{ name: 'favorites' }"
-                        class="icon-circle__item __icon-heart"
-                     ></router-link>
+                  <router-link :to="{ name: 'favorites' }" class="header-main__icon icon-circle icon-circle--favorites-icon">
+                     <div class="icon-circle__item __icon-heart"></div>
                      <div class="icon-circle__number" v-if="inFavorites > 0">{{ inFavorites }}</div>
-                  </div>
-                  <div class="header-main__icon icon-circle icon-circle--cart-icon">
-                     <router-link :to="{ name: 'cart' }" class="icon-circle__item __icon-cart"></router-link>
+                  </router-link>
+                  <router-link :to="{ name: 'cart' }" class="header-main__icon icon-circle icon-circle--cart-icon">
+                     <div class="icon-circle__item __icon-cart"></div>
                      <div class="icon-circle__number" v-if="inCart > 0">{{ inCart }}</div>
-                  </div>
+                  </router-link>
                </div>
             </div>
          </div>
@@ -216,6 +213,7 @@ export default {
    name: "PageHeader",
    data() {
       return {
+         lockBodyClass: "__no-scroll",
          mobileMedia: window.matchMedia(`(max-width: ${899}px)`),
          platform: "desktop",
          elemsConditions: {
@@ -242,8 +240,8 @@ export default {
          this.elemsConditions[this.platform][condKey] = !cond;
          if (doBodyLock)
             !cond === true
-               ? document.body.classList.add("__no-scroll")
-               : document.body.classList.remove("__no-scroll");
+               ? document.body.classList.add(this.lockBodyClass)
+               : document.body.classList.remove(this.lockBodyClass);
       },
       calcWrapperPading() {
          const header = this.$refs.header;
@@ -299,20 +297,28 @@ export default {
          // на мобильной версии - убрать обработчик, на десктоп - поставить
          this.mobileMedia.addEventListener("change", toggleHandler);
       },
-      // возврат настроек шапки по умолчанию при переходе с одной платформы на другую
-      refresh() {
-         this.mobileMedia.addEventListener("change", () => {
-            // сброс состояний
-            const obj = this.elemsConditions;
-            for (let key in obj) {
-               for (let subKey in obj[key]) {
-                  obj[key][subKey] = false;
-               }
+      closeMenuOnPageChange() {
+         this.$watch(
+            () => this.$route,
+            () => {
+               this.refresh();
             }
-            this.$refs.header.style.top = "0px";
-            if (this.$refs.headerBottom)
-               this.$refs.headerBottom.style.top = "100%";
-         });
+         );
+      },
+      // возврат состояний элементов и самой шапки по умолчанию, например при переходе с одной платформы на другую
+      refresh() {
+         document.body.classList.remove("__no-scroll");
+         // сброс состояний элементов
+         const obj = this.elemsConditions;
+         for (let key in obj) {
+            for (let subKey in obj[key]) {
+               obj[key][subKey] = false;
+            }
+         }
+         // сброс состояний шапки
+         this.$refs.header.style.top = "0px";
+         if (this.$refs.headerBottom)
+            this.$refs.headerBottom.style.top = "100%";
       },
    },
    computed: {
@@ -328,14 +334,17 @@ export default {
       platform(newVal, oldVal) {
          // убрать запрет прокрутки при переходе с mobile на desktop
          if (newVal === "desktop" && oldVal === "mobile")
-            document.body.classList.remove("__no-scroll");
+            document.body.classList.remove(this.lockBodyClass);
       },
    },
    mounted() {
       this.definePlatform();
       this.calcWrapperPading();
       this.scrollHandler();
-      this.refresh();
+      this.closeMenuOnPageChange();
+      this.mobileMedia.addEventListener("change", () => {
+         this.refresh();
+      });
    },
 };
 </script>

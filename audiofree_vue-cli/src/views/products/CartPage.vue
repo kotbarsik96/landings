@@ -31,17 +31,17 @@
                   >
                      <div class="ctlt-item__image ctlt-item__item">
                         <router-link :to="'/products/' + prod.vendorCode">
-                           <img :src="'/img/products/' + products[prod.vendorCode].images[0]" alt />
+                           <img :src="'/img/products/' + getProd(prod.vendorCode).images[0]" alt />
                         </router-link>
                      </div>
                      <div class="ctlt-item__name ctlt-item__item">
                         <router-link
                            :to="'/products/' + prod.vendorCode"
-                        >{{ products[prod.vendorCode].name }} ({{ prod.color.toLowerCase() }})</router-link>
+                        >{{ getProd(prod.vendorCode).name }} ({{ prod.color.toLowerCase() }})</router-link>
                      </div>
                      <div class="ctlt-item__price ctlt-item__item">
                         <div class="cart-list__title">Цена за штуку:</div>
-                        <p>{{ products[prod.vendorCode].price.toLocaleString() }} ₽</p>
+                        <p>{{ getProd(prod.vendorCode).price.toLocaleString() }} ₽</p>
                      </div>
                      <div class="ctlt-item__amount ctlt-item__item controls">
                         <div class="controls__amount">
@@ -65,7 +65,7 @@
                      </div>
                      <div class="ctlt-item__total ctlt-item__item">
                         <div class="cart-list__title cart-list__title--colored">Итого:</div>
-                        <p>{{ (products[prod.vendorCode].price * prod.amount).toLocaleString() }} ₽</p>
+                        <p>{{ (getProd(prod.vendorCode).price * prod.amount).toLocaleString() }} ₽</p>
                      </div>
                      <div
                         class="ctlt-item__cancel ctlt-item__item"
@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { lStorage, checkProductAmountCorrect } from "@/assets/js/scripts";
+import { lStorage, checkProductAmountCorrect, getProd } from "@/assets/js/scripts";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -138,7 +138,7 @@ export default {
       totalPrice() {
          let totalPrice = 0;
          this.cartProducts.forEach((cartProd) => {
-            const product = this.products[cartProd.vendorCode];
+            const product = this.getProd(cartProd.vendorCode);
             if (product) totalPrice += product.price * cartProd.amount;
          });
          return totalPrice;
@@ -146,6 +146,7 @@ export default {
    },
    methods: {
       ...mapMutations(["addNotification"]),
+      getProd,
       getStorageCartProducts() {
          switch (this.cartType) {
             case "cart-oneclick":

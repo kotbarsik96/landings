@@ -2,8 +2,6 @@
    <div
       class="product-card card product-card--type-2"
       v-if="product"
-      :data-vendor-code="vendorCode"
-      v-cloak
    >
       <div class="card__bottom card__side product-card__bottom"></div>
       <div class="card__container card__side product-card__container">
@@ -50,7 +48,7 @@
          <div class="product-card__buttons product-buttons" ref="cardButtons">
             <router-link
                to="/cart-oneclick"
-               class="button button--colored-bg button--buy-oneclick"
+               class="button button--colored-bg"
                @click="addToCart('cartOneclick')"
             >Купить в 1 клик</router-link>
             <button class="button button--to-cart" @click="addToCart()">В корзину</button>

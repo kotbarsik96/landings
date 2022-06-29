@@ -1,9 +1,7 @@
 <template>
    <div
       class="product-card card product-card--type-horizontal"
-      :data-vendor-code="vendorCode"
       v-if="product"
-      v-cloak
    >
       <div class="card__bottom card__side product-card__bottom"></div>
       <div class="card__container card__side product-card__container">

@@ -11,205 +11,59 @@
                   </div>
                   <div class="page-title__title">Каталог</div>
                </div>
+               <div class="catalogue-block__selects">
+                  <select-block
+                     inputName="sort-type"
+                     :options="[
+                     { title: 'С начала (от меньшего к большему)', value: 'start' },
+                     { title: 'С конца (от большего к меньшему)', value: 'end' }
+                  ]"
+                     @selectValueChange="(selected) => getSortOrder(selected)"
+                     ref="sortOrderBlock"
+                  ></select-block>
+                  <select-block
+                     inputName="sort-catalogue"
+                     :objectToSort="filteredProducts"
+                     :options="[
+                     { title: 'По названию', value: 'name' },
+                     { title: 'По цене', value: 'price' },
+                     { title: 'По отзывам', value: 'rating' }
+                  ]"
+                     @sortValueChange="(sorted) => getSortedCatalogueList(sorted)"
+                     ref="sortKeysBlock"
+                  ></select-block>
+               </div>
             </div>
             <div class="catalogue-block__aside">
-               <div class="card filter">
-                  <div class="card__bottom card__side"></div>
-                  <div
-                     class="card__container spoiler-elem card__side filter__container"
-                     data-is-spoiler="max, 949"
-                  >
-                     <div class="filter__title spoiler-elem__title">
-                        <div class="filter__title-text">Фильтр товаров</div>
-                        <div class="filter__title-icon __icon-filter"></div>
-                     </div>
-                     <div class="filter__main spoiler-elem__content">
-                        <div class="filter-block filter-block--select">
-                           <div
-                              class="select"
-                              data-dynamic-adaptive="min, 950, catalogue-block__title"
-                           >
-                              <div class="select__options-list">
-                                 <div class="select__option" data-select-value="price">По цене</div>
-                                 <div
-                                    class="select__option"
-                                    data-select-value="popular"
-                                 >По популярности</div>
-                                 <div class="select__option" data-select-value="name">По названию</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="filter-block">
-                           <div class="filter-block__title">Бренд:</div>
-                           <div class="filter-block__list">
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="brand" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Samsung
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="brand" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Huawei
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="brand" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Meizu
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="brand" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Phillips
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="brand" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Apple AirPods
-                                 </div>
-                              </label>
-                           </div>
-                        </div>
-                        <div class="filter-block">
-                           <div class="filter-block__title">Категория:</div>
-                           <div class="filter-block__list">
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="category" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Наушники-вкладыши
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="category" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Наушники Bluetooth
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="category" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Полноразмерные
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="category" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Наушники накладные
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="category" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Спортивные наушники
-                                 </div>
-                              </label>
-                           </div>
-                        </div>
-                        <div class="filter-block" id="range-example">
-                           <div class="filter-block__title">Цена:</div>
-                           <div class="filter-block__price-range price-range">
-                              <div class="price-range__price" data-max-price-value="9999">
-                                 <div class="price-range__price-input">
-                                    <input
-                                       class="price-range__input price-range__input--min"
-                                       type="text"
-                                       placeholder="499"
-                                    />
-                                    ₽
-                                 </div>
-                                 <div class="price-range__separator">–</div>
-                                 <div class="price-range__price-input">
-                                    <input
-                                       class="price-range__input price-range__input--max"
-                                       type="text"
-                                       placeholder="8499"
-                                    />
-                                    ₽
-                                 </div>
-                              </div>
-                              <div class="price-range__range price-range__range--double">
-                                 <div class="price-range__scale">
-                                    <div class="price-range__bar"></div>
-                                 </div>
-                                 <div class="price-range__toggle price-range__toggle--min"></div>
-                                 <div class="price-range__toggle price-range__toggle--max"></div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="filter-block">
-                           <div class="filter-block__title">По акции:</div>
-                           <div class="filter-block__list">
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="promotion" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Со скидкой
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="promotion" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    По акции
-                                 </div>
-                              </label>
-                              <label class="checkcircle">
-                                 <input type="checkbox" name="promotion" />
-                                 <div class="checkcircle__option">
-                                    <span></span>
-                                    Распродажа
-                                 </div>
-                              </label>
-                           </div>
-                        </div>
-                        <div class="filter__button">
-                           <button class="button filter__clear-button">Очистить фильтр</button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+               <filter-block
+                  filterBlockTitle="Фильтр товаров"
+                  :fields="[
+                     { title: 'Бренд', inputsType: 'checkbox', key: 'brand' },
+                     { title: 'Категория', inputsType: 'checkbox', key: 'category' },
+                     { title: 'Цена', inputsType: 'range', key: 'price', maxRangeValue: calcMaxRangeValue('price'), rangeValueString: '₽' },
+                     { title: 'По акции', inputsType: 'checkbox', key: 'sale' },
+                  ]"
+                  :objectToFilter="products"
+                  @filterApply="(filtered) => getFilteredCatalogueList(filtered)"
+                  ref="filterBlock"
+               ></filter-block>
                <product-info-card :title="'Распродажа'"></product-info-card>
             </div>
-            <div class="catalogue-block__cards-list cards-list">
-               <div class="card-wrapper">
-                  <product-info-card :title="'Распродажа'"></product-info-card>
-               </div>
-               <div
-                  class="card-wrapper"
-                  v-for="(prod, vendorCode) in currentCatalogueList"
-                  :key="vendorCode"
-               >
-                  <product-card-1 :vendorCode="vendorCode"></product-card-1>
-               </div>
-            </div>
+            <router-view :catalogueListPage="catalogueListPage" />
             <div class="catalogue-block__page-counter page-counter">
                <div class="page-counter__container">
                   <router-link
                      class="page-counter__number"
                      v-for="num in pagesAmount"
                      :key="num"
-                     :to="{ name: 'catalogue', params: { pageNumber: [num] } }"
+                     :to="{ name: 'catalogue-list', params: { pageNumber: [num] } }"
                   >{{ num }}</router-link>
                   <router-link
-                     :to="{ name: 'catalogue', params: { pageNumber: [prevPageNumber] } }"
+                     :to="{ name: 'catalogue-list', params: { pageNumber: [prevPageNumber] } }"
                      class="page-counter__arrow page-counter__arrow--back __icon-back-arrow"
                   ></router-link>
                   <router-link
-                     :to="{ name: 'catalogue', params: { pageNumber: [nextPageNumber] } }"
+                     :to="{ name: 'catalogue-list', params: { pageNumber: [nextPageNumber] } }"
                      class="page-counter__arrow page-counter__arrow--next __icon-next-arrow"
                   ></router-link>
                </div>
@@ -254,26 +108,37 @@
 <script>
 import { mapGetters } from "vuex";
 import SpoilerTabWrapper from "@/components/spoiler-tab/SpoilerTabWrapper";
+import FilterBlock from "@/components/catalogue/FilterBlock";
 
 export default {
    name: "CataloguePage",
    components: {
       SpoilerTabWrapper,
+      FilterBlock,
    },
    data() {
       return {
          productsPerPage: 8,
+         filteredProducts: [],
+         productsSortType: "",
+         sortedProducts: [],
+         catalogueList: [],
+         catalogueListPage: [],
       };
    },
    computed: {
       ...mapGetters(["products"]),
       pageNumber() {
          const pageNumber = this.$route.params.pageNumber;
-         return (Array.isArray(pageNumber) ? parseInt(pageNumber[0]) : parseInt(pageNumber)) || [1];
+         return (
+            (Array.isArray(pageNumber)
+               ? parseInt(pageNumber[0])
+               : parseInt(pageNumber)) || [1]
+         );
       },
       pagesAmount() {
          return Math.ceil(
-            Object.keys(this.products).length / this.productsPerPage
+            Object.keys(this.catalogueList).length / this.productsPerPage
          );
       },
       nextPageNumber() {
@@ -284,19 +149,61 @@ export default {
          const number = this.pageNumber - 1;
          return number > 0 ? number : 1;
       },
-      currentCatalogueList() {
-         const startPos =
-            this.productsPerPage * this.pageNumber - this.productsPerPage;
-         const endPos = startPos + this.productsPerPage;
-         const vendorCodes = Object.keys(this.products);
+   },
+   methods: {
+      calcMaxRangeValue(key) {
+         const keyValuesList = new Set();
+         this.products.forEach((prod) => {
+            if (prod[key]) keyValuesList.add(prod[key]);
+         });
 
-         const catalogueList = {};
-         for (let i = startPos; i < endPos; i++) {
-            const vendorCode = vendorCodes[i];
-            const product = this.products[vendorCode];
-            if (product) catalogueList[vendorCode] = product;
+         const keyValuesArray = Array.from(keyValuesList);
+         return Math.max(...keyValuesArray);
+      },
+      getFilteredCatalogueList(filtered) {
+         this.filteredProducts = filtered;
+         this.$refs.sortKeysBlock.doSort(this.filteredProducts); // $emit("sortValueChange"), запустит getSortedCatalogueList()
+      },
+      getSortOrder(selected) {
+         this.productsSortType = selected.value;
+         if (this.sortedProducts) this.getCatalogueList();
+      },
+      getSortedCatalogueList(sorted) {
+         this.sortedProducts = sorted;
+         this.getCatalogueList();
+      },
+      getCatalogueList() {
+         let sorted;
+         switch (this.productsSortType) {
+            case "end":
+               sorted = [...this.sortedProducts].reverse();
+               break;
+            default:
+               sorted = this.sortedProducts;
+               break;
          }
-         return catalogueList;
+
+         this.catalogueList = sorted;
+         const endPos = this.productsPerPage * this.pageNumber;
+         const startPos = endPos - this.productsPerPage;
+         this.catalogueListPage = [];
+
+         for (let i = startPos; i < endPos; i++) {
+            const prod = this.catalogueList[i];
+            if (prod) this.catalogueListPage.push(prod);
+         }
+
+         if (this.pageNumber > this.pagesAmount) {
+            this.$router.push({
+               name: "catalogue-list",
+               params: { pageNumber: 1 },
+            });
+         }
+      },
+   },
+   watch: {
+      pageNumber() {
+         this.getCatalogueList();
       },
    },
 };

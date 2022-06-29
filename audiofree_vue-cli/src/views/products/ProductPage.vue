@@ -1,14 +1,14 @@
 <template>
-   <main class="product-page">
+   <main class="product-page" v-if="product">
       <section class="product-block">
          <div class="product-block__container container">
             <div class="product-main">
                <div class="product-main__page-title page-title">
                   <div class="page-title__links">
-                     <a
-                        href="../html-main/index.html"
+                     <router-link
+                        :to="{ name: 'home' }"
                         class="page-title__arrow-back __icon-back-arrow"
-                     ></a>
+                     ></router-link>
                      <router-link :to="{ name: 'home' }" class="page-title__link-back">Главная</router-link>
                      <router-link :to="{ name: 'catalogue' }" class="page-title__link-back">Каталог</router-link>
                      <router-link :to="{ name: 'home' }" class="page-title__link-back">
@@ -46,7 +46,7 @@
                         </div>
                      </div>
                      <img
-                        :src="'../img/products/' + product.images[currentImageIndex]"
+                        :src="'/img/products/' + product.images[currentImageIndex]"
                         alt="Фото товара"
                      />
                   </div>
@@ -58,7 +58,7 @@
                         :key="index"
                      >
                         <img
-                           :src="'../img/products/' + product.images[index]"
+                           :src="'/img/products/' + product.images[index]"
                            @click="currentImageIndex = index"
                            alt="Фото товара"
                         />
@@ -139,7 +139,7 @@
                <div class="product-main__buttons product-buttons">
                   <router-link
                      :to="{ name: 'cart-oneclick' }"
-                     class="button button--colored-bg button--buy-oneclick"
+                     class="button button--colored-bg"
                      @click="addToCart('cartOneclick', prodParams)"
                   >Купить в 1 клик</router-link>
                   <button
@@ -259,6 +259,7 @@ import {
    toggleFavorites,
    mediaQueriesHandlers,
    checkProductAmountCorrect,
+   getProd,
 } from "@/assets/js/scripts";
 
 export default {
@@ -286,7 +287,7 @@ export default {
    computed: {
       ...mapGetters(["products", "productCards"]),
       product() {
-         return this.products[this.vendorCode];
+         return this.getProd(this.vendorCode);
       },
       popup() {
          return PopupNotification;
@@ -306,6 +307,7 @@ export default {
       toggleFavorites,
       mediaQueriesHandlers,
       addToCart,
+      getProd,
       initComponentParams() {
          // добавить в общий список компонентов (vuex store)
          this.addProductCardComponent(this);
@@ -337,11 +339,17 @@ export default {
       },
    },
    created() {
-      this.loadProductsInfo();
+      if (this.product) {
+         this.loadProductsInfo();
+      }
    },
    mounted() {
-      this.initComponentParams();
-      this.mediaQueriesHandlers();
+      if (this.product) {
+         this.initComponentParams();
+         this.mediaQueriesHandlers();
+      } else {
+         this.$router.push({ name: "not-found" })
+      }
    },
 };
 </script>

@@ -10,6 +10,7 @@ import ProductCardHorizontal from "@/components/product-cards/ProductCardHorizon
 import ProductInfoCard from "@/components/product-cards/ProductInfoCard";
 import InfoCard from "@/components/misc/InfoCard";
 import SearchField from "@/components/misc/SearchField";
+import SelectBlock from "@/components/misc/SelectBlock";
 
 export default [
     PageHeader,
@@ -23,5 +24,6 @@ export default [
     ProductCardHorizontal,
     ProductInfoCard,
     InfoCard,
-    SearchField
+    SearchField,
+    SelectBlock
 ]

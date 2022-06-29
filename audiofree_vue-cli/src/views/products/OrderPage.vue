@@ -160,7 +160,7 @@
 </template>
 
 <script>
-import { lStorage } from "@/assets/js/scripts";
+import { lStorage, getProd } from "@/assets/js/scripts";
 import { mapGetters } from "vuex";
 
 export default {
@@ -170,6 +170,9 @@ export default {
          cartRouteName: "cart",
          orderRouteName: "order",
       };
+   },
+   methods: {
+      getProd
    },
    computed: {
       ...mapGetters(["products"]),
@@ -189,7 +192,7 @@ export default {
          const productsCart = lStorage.getStorage(lStorage.keys[this.cartType]);
          let totalPrice = 0;
          productsCart.forEach((cartProd) => {
-            const prodInfo = this.products[cartProd.vendorCode];
+            const prodInfo = this.getProd(cartProd.vendorCode);
             totalPrice += prodInfo.price * cartProd.amount;
          });
 

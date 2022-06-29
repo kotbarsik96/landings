@@ -7,6 +7,12 @@
         }
     }
 
+    &__selects{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
     // !MOBILE!
     @media (max-width: 499px){
         &__cards-list{
@@ -15,11 +21,15 @@
             }
         }
     }
-    @media (max-width: 949px){
+    @media (max-width: 992px){
         padding: 0 0 30px 0;
         .filter{
             padding: 0;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        &__selects{
+            justify-content: center;
         }
 
         &__aside{
@@ -40,7 +50,7 @@
     }
 
     // !DESKTOP!
-    @media (min-width: 950px){
+    @media (min-width: 993px){
         padding: 0 0 105px 0;
 
         &__container {
@@ -60,12 +70,14 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            .select{
-                flex: 0 0 270px;
-            }
             .page-title{
-                margin-bottom: 0;
+                margin: 0 25px 0 0;
             }
+        }
+        &__selects{
+            flex: 1 1 auto;
+            margin: 0 10px 0 0;
+            justify-content: flex-end;
         }
     
         &__aside {
@@ -92,10 +104,6 @@
         &__page-counter{
             grid-area: catalogue-page-counter;
         }
-
-        .filter-block--select{
-            display: none;
-        }
     }
 }
 // <CATALOGUE-BLOCK>==================================================================================
@@ -104,18 +112,19 @@
 .filter {
     color: #353535;
 
-    .card__bottom {
-        bottom: -35px;
-    }
-
     &__container{
         background: #fff;
-        padding: 25px 0 65px 0;
     }
+
     &__title,
     .filter-block {
         padding-left: 20px;
         padding-right: 25px;
+        padding-top: 25px;
+    }
+
+    &__title{
+        cursor: pointer;
     }
 
     &__title {
@@ -135,16 +144,26 @@
         font-size: 28px;
     }
 
-    &__button {
+    &__main{
+        padding: 0 0 65px 0;
+        transition-property: max-height, padding, margin;
+        transition-duration: 1s;
+    }
+
+    &__buttons {
         display: flex;
         justify-content: center;
+        flex-direction: column;
 
         .button {
             border: 2px solid $themeColor;
             margin: 0 auto;
-            padding: 17px 50px;
+            padding: 17px 30px;
             font-size: 16px;
             @include line-height(16, 19);
+            &:not(:last-child){
+                margin-bottom: 15px;
+            }
         }
     }
 }

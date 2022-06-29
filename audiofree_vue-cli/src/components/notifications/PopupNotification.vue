@@ -1,7 +1,8 @@
 <template>
    <div class="popup card" ref="popup">
       <div class="popup__bottom card__bottom card__side"></div>
-      <div class="popup__container card__container card__side">
+      <div class="popup__container card__container card__side" ref="popupContainer">
+         <div class="popup__timeline" ref="timeline"></div>
          <div class="popup__cancel" @click="removeNotification(popupData.id)">
             <div class="popup__cancel-button"></div>
          </div>
@@ -27,6 +28,7 @@
 // }
 
 import { mapMutations, mapGetters } from "vuex";
+import { gsap } from "gsap";
 
 export default {
    name: "PopupNotification",
@@ -34,7 +36,9 @@ export default {
       popupData: Object,
    },
    data() {
-      return {};
+      return {
+         timetolive: 3000, // по умолчанию, может быть перезаписано popupData.timetolive
+      };
    },
    computed: {
       ...mapGetters(["notificationsList"]),
@@ -66,9 +70,24 @@ export default {
          });
          return "";
       },
+      setTimelineAnimation() {
+         const tline = this.$refs.timeline;
+         if (tline) {
+            this.$nextTick().then(() => {
+               const timetolive = this.timetolive / 1000;
+               const popupWidth = this.$refs.popupContainer.offsetWidth;
+
+               gsap.to(tline, {
+                  duration: timetolive,
+                  width: popupWidth,
+                  ease: "none",
+               });
+            });
+         }
+      },
       removeOnTimeout() {
-         let timetolive = parseInt(this.popupData.timetolive);
-         if (!timetolive) timetolive = 3000;
+         let timetolive =
+            parseInt(this.popupData.timetolive) || this.timetolive;
          setTimeout(() => {
             this.removeNotification(this.popupData.id);
          }, timetolive);
@@ -76,6 +95,7 @@ export default {
    },
    mounted() {
       this.removeOnTimeout();
+      this.setTimelineAnimation();
    },
 };
 </script>

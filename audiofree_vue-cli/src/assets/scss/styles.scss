@@ -67,6 +67,13 @@ main {
 .favorites-page {
     padding: 70px 0 35px 0;
 }
+
+a {
+    transition: color $anchorHover;
+    &:hover{
+        color: $greenIcon;
+    }
+}
 // <ОБЩИЕ СТИЛИ>==================================================================================
 
 // <POPUP>========================================================================================
@@ -82,6 +89,8 @@ main {
     &__container {
         padding: 25px;
         max-width: 500px;
+        position: relative;
+        overflow: hidden;
         @media (max-width: 549px) {
             max-width: 300px;
         }
@@ -90,6 +99,15 @@ main {
             max-height: 100px;
             object-fit: contain;
         }
+    }
+
+    &__timeline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 5px;
+        background: $themeColor;
     }
 
     &__cancel {
@@ -217,6 +235,13 @@ main {
     background: transparent;
     text-align: center;
     cursor: pointer;
+    transition-property: background, color;
+    transition-duration: $anchorHover;
+    &:hover,
+    &--colored-bg:hover {
+        background: rgba($themeColor-dark, 0.9);
+        color: #fff;
+    }
 }
 .button--colored-bg {
     font-weight: 700;
@@ -314,10 +339,12 @@ main {
 $showTransition: 0.25;
 .select {
     position: relative;
+    margin: 0 10px 15px 10px;
+    min-width: 175px;
 
     &__selected,
     &__option {
-        padding: 12px 15px 12px 18px;
+        padding: 12px 40px 12px 18px;
         box-sizing: border-box;
         border-radius: 9px;
         cursor: pointer;
@@ -1223,16 +1250,7 @@ $searchBorderRadius: 23px;
         box-sizing: border-box;
         padding: 15px 16px;
     }
-    .button--colored-bg {
-        background: $themeColor;
-        border-bottom: 1px solid #7b68b1;
-        border: none;
-    }
-    .button--colored-border {
-        border: 2px solid $themeColor;
-    }
 }
-
 // <INFO-PRODUCT-CARD>============================================================================
 .product-info-card {
     padding: 0 10px;
@@ -2119,6 +2137,19 @@ $searchBorderRadius: 23px;
                     margin: 0;
                 }
             }
+
+            &__icon[class*="--"] {
+                transition: background $anchorHover;
+                *::before {
+                    transition: color $anchorHover;
+                }
+                &:hover {
+                    background: $greenIcon;
+                }
+                &:hover > *::before {
+                    color: #fff;
+                }
+            }
         }
         .header-bottom {
             $pdTopBottom: 11px;
@@ -2183,14 +2214,18 @@ $searchBorderRadius: 23px;
                     &:hover {
                         color: $hvrColor;
                     }
-                    &:hover::before {
+                    &::before {
                         content: "";
                         position: absolute;
                         bottom: -0.7em;
                         background: $hvrColor;
                         width: 100%;
-                        height: 3px;
+                        height: 0px;
                         border-radius: 10px;
+                        transition: all $anchorHover;
+                    }
+                    &:hover::before {
+                        height: 3px;
                     }
                 }
             }
@@ -2304,6 +2339,7 @@ $searchBorderRadius: 23px;
     }
     &__title {
         cursor: pointer;
+        font-weight: 400;
         font-size: 16px;
         @include line-height(16, 19);
         color: #8a8a8a;
@@ -2341,14 +2377,14 @@ $searchBorderRadius: 23px;
     &__content-title {
         font-weight: 700;
         font-size: 22px;
-        &:not(:last-child){
+        &:not(:last-child) {
             margin: 0 0 50px 0;
         }
     }
     &__content-paragraph {
         font-weight: 400;
         font-size: 16px;
-        &:not(:last-child){
+        &:not(:last-child) {
             margin: 0 0 50px 0;
         }
     }
@@ -2462,15 +2498,15 @@ $searchBorderRadius: 23px;
         transition-delay: 0, 0, 0, $transToggleDuration;
     }
 
-    &__content-title{
+    &__content-title {
         font-weight: 700;
         font-size: 18px;
-        &:not(:last-child){
+        &:not(:last-child) {
             margin: 0 0 45px 0;
         }
     }
     &__content-paragraph {
-        &:not(:last-child){
+        &:not(:last-child) {
             margin: 0 0 45px 0;
         }
     }
@@ -2522,7 +2558,7 @@ $searchBorderRadius: 23px;
         box-sizing: border-box;
         border: 1px solid #dadada;
         color: #808080;
-        padding: 9px 23px;
+        padding: 9px 19px;
         border-radius: 9px;
         display: flex;
         input {
@@ -2542,6 +2578,7 @@ $searchBorderRadius: 23px;
     }
 
     &__scale {
+        touch-action: none;
         height: 5px;
         background: #f0f0f0;
         width: 100%;
@@ -2570,7 +2607,7 @@ $searchBorderRadius: 23px;
     }
 
     &__toggle--min {
-        z-index: 30;
+        z-index: 15;
     }
 
     &__toggle--max {
@@ -2733,6 +2770,26 @@ $searchBorderRadius: 23px;
     }
 }
 // <INFO-BLOCK>===================================================================================
+
+// <NOT-FOUND-PAGE>===============================================================================
+.not-found {
+    padding: 100px 0 50px 0;
+    text-align: center;
+
+    &__title {
+        margin: 0 0 30px 0;
+    }
+
+    &__paragraph {
+        margin: 0 0 15px 0;
+        font-size: 20px;
+    }
+
+    &__link {
+        color: $themeColor !important;
+    }
+}
+// <NOT-FOUND-PAGE>===============================================================================
 
 // <INPUT-FIELD>==================================================================================
 .input-field {
