@@ -36,7 +36,7 @@
             "examples": [
                 {
                     "text": "audiofree",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/catalogue.html#range-example"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/catalogue/"
                 },
                 {
                     "text": "Device",
@@ -54,7 +54,7 @@
             "examples": [
                 {
                     "text": "audiofree (на главной странице несколько слайдеров)",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 },
                 {
                     "text": "Streetster (связан с кружочками выбора цвета)",
@@ -83,7 +83,7 @@
             "examples": [
                 {
                     "text": "audiofree (классический спойлер активируется на мобильной версии)",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/index.html#spoiler-toggler-example"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 }
             ]
         },
@@ -97,7 +97,7 @@
             "examples": [
                 {
                     "text": "audiofree (для вызова нужно совершить действие с товаром, например: добавить в корзину/избранное, удалить из корзины/избранного)",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/catalogue.html"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/catalogue"
                 }
             ]
         },
@@ -111,7 +111,7 @@
             "examples": [
                 {
                     "text": "audiofree (на компьютерной версии показывается вместо спойлеров)",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/index.html#spoiler-toggler-example"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 },
                 {
                     "text": "Takeaway & Delivery",

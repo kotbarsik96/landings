@@ -92,7 +92,7 @@
             "Работающая корзина (на JS)",
             "Ползунок для установления цены (в фильтре товаров)"
         ],
-        "url": "https://kotbarsik96.github.io/sites/audiofree/dist/html-main/index.html",
+        "url": "https://kotbarsik96.github.io/sites/audiofree/dist/",
         "imgDesktop": "img/sites-photo/audiofree/desktop",
         "imgMobile": "img/sites-photo/audiofree/mobile",
         "imgIcon": "img/sites-photo/audiofree/icon.svg",
@@ -147,7 +147,7 @@
         "url": "https://kotbarsik96.github.io/sites/vantage/dist/index.html",
         "imgDesktop": "img/sites-photo/vantage/desktop",
         "imgMobile": "img/sites-photo/vantage/mobile",
-        "imgIcon": "img/sites-photo/vantage/icon.svg",
+        "imgIcon": "img/sites-photo/vantage/icon.png",
         "isDesktop": true
     }
 ]
