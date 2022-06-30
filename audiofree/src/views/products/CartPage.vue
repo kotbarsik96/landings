@@ -31,7 +31,7 @@
                   >
                      <div class="ctlt-item__image ctlt-item__item">
                         <router-link :to="'/products/' + prod.vendorCode">
-                           <img :src="'/img/products/' + getProd(prod.vendorCode).images[0]" alt />
+                           <img :src="rootPath + 'img/products/' + getProd(prod.vendorCode).images[0]" alt />
                         </router-link>
                      </div>
                      <div class="ctlt-item__name ctlt-item__item">
@@ -111,11 +111,13 @@
 <script>
 import { lStorage, checkProductAmountCorrect, getProd } from "@/assets/js/scripts";
 import { mapGetters, mapMutations } from "vuex";
+import rootPath from "@/assets/root-path";
 
 export default {
    name: "CartPage",
    data() {
       return {
+         rootPath,
          cartProducts: [],
          orderRouteName: "order",
       };

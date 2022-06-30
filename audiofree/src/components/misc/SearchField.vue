@@ -25,7 +25,7 @@
             class="search-results__item"
          >
             <img
-               :src="`/img/products/${prod.images[0]}`"
+               :src="`${rootPath}img/products/${prod.images[0]}`"
                :alt="prod.vendorCode"
                class="search-results__item-image"
             />

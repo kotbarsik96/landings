@@ -252,6 +252,8 @@ export default {
                wrapper.style.paddingTop = `${header.offsetHeight}px`;
             }, 0);
          };
+         
+         setPadding();
 
          nextTick().then(() => {
             setPadding();
