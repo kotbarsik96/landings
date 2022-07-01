@@ -27,8 +27,10 @@ export default {
       transitionMode() {
          // убрать mode="out-in", если в pathKey встречено исключение из списка
          const exceptions = ["products"];
-         if(this.handleExceptions(exceptions, this.pathKey)) return "out-in";
-         return "";
+         if(this.handleExceptions(exceptions, this.pathKey)) {
+            return "";
+         }
+         return "out-in";
       },
    },
    methods: {

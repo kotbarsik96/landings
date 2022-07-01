@@ -31,7 +31,10 @@
                   >
                      <div class="ctlt-item__image ctlt-item__item">
                         <router-link :to="'/products/' + prod.vendorCode">
-                           <img :src="rootPath + 'img/products/' + getProd(prod.vendorCode).images[0]" alt />
+                           <img
+                              :src="rootPath + 'img/products/' + getProd(prod.vendorCode).images[0]"
+                              alt
+                           />
                         </router-link>
                      </div>
                      <div class="ctlt-item__name ctlt-item__item">
@@ -109,7 +112,12 @@
 </template>
 
 <script>
-import { lStorage, checkProductAmountCorrect, getProd } from "@/assets/js/scripts";
+import {
+   lStorage,
+   checkProductAmountCorrect,
+   getProd,
+   generateId,
+} from "@/assets/js/scripts";
 import { mapGetters, mapMutations } from "vuex";
 import rootPath from "@/assets/root-path";
 
@@ -150,16 +158,15 @@ export default {
       ...mapMutations(["addNotification"]),
       getProd,
       getStorageCartProducts() {
-         switch (this.cartType) {
-            case "cart-oneclick":
-               this.cartProducts =
-                  lStorage.getStorage(lStorage.keys["cart-oneclick"]).filter(prod => prod && prod.vendorCode) || [];
-               break;
-            case "cart":
-               this.cartProducts =
-                  lStorage.getStorage(lStorage.keys.cart).filter(prod => prod && prod.vendorCode) || [];
-               break;
-         }
+         const cartKey = lStorage.keys[this.cartType];
+         const storageProducts =
+            lStorage
+               .getStorage(cartKey)
+               .filter((prod) => prod && prod.vendorCode) || [];
+         storageProducts.forEach((prod) => {
+            if (!prod.id) prod.id = generateId(prod.vendorCode);
+         });
+         this.cartProducts = storageProducts;
       },
       changeAmount(event, action, id) {
          const input = event.target
@@ -184,7 +191,7 @@ export default {
          this.addNotification({
             message: [
                `Товар ${
-                  this.products[productObj.vendorCode].name
+                  this.getProd(productObj.vendorCode).name
                } убран из корзины.`,
                {
                   node: '<span class="link-cancel">Отменить</span>',

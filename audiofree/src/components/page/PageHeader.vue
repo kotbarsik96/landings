@@ -278,7 +278,7 @@ export default {
          };
          const doDefault = () => {
             header.style.top = "0px";
-            headerBottom.style.top = "100%";
+            headerBottom.style.top = "99%";
          };
          const toggleHandler = () => {
             if (!handlerIsSet && !this.mobileMedia.matches) {
@@ -320,7 +320,7 @@ export default {
          // сброс состояний шапки
          this.$refs.header.style.top = "0px";
          if (this.$refs.headerBottom)
-            this.$refs.headerBottom.style.top = "100%";
+            this.$refs.headerBottom.style.top = "99%";
       },
    },
    computed: {
