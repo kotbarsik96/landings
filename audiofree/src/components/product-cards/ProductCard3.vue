@@ -30,13 +30,13 @@
             </div>
          </div>
          <router-link
-            :to="'/products/' + vendorCode"
+            :to="{ name: 'product', params: { vendorCode } }"
             class="product-card__image"
          >
             <img :src="rootPath + 'img/products/' + product.images[0]" alt />
          </router-link>
          <router-link
-            :to="'/products/' + vendorCode"
+            :to="{ name: 'product', params: { vendorCode } }"
             class="product-card__name"
          >{{ product.name }}</router-link>
          <div class="product-card__info">
@@ -52,7 +52,7 @@
          </div>
          <div class="product-card__buttons product-buttons" ref="cardButtons">
             <router-link
-               :to="'/products/' + vendorCode"
+               :to="{ name: 'product', params: { vendorCode } }"
                class="button button--colored-border"
             >Подробней</router-link>
          </div>

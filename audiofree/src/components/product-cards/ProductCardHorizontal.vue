@@ -6,7 +6,7 @@
       <div class="card__bottom card__side product-card__bottom"></div>
       <div class="card__container card__side product-card__container">
          <router-link
-            :to="'/products/' + vendorCode"
+            :to="{ name: 'product', params: { vendorCode } }"
             href="../html-products/vendorCode.html"
             class="product-card__image"
          >
@@ -14,7 +14,7 @@
          </router-link>
          <div class="product-card__vertical-info">
             <router-link
-               :to="'/products/' + vendorCode"
+               :to="{ name: 'product', params: { vendorCode } }"
                href="../html-products/vendorCode.html"
                class="product-card__name"
             >{{ product.name }}</router-link>

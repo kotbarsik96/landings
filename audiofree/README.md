@@ -15,7 +15,7 @@ npm run serve
 npm run build
 ```
 
-### Before compiling production version, edit: 1) /src/assets/root-path.js; 2) /src/router/index.js
+### Before compiling production version, edit: 1) /src/assets/root-path.js
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -25,7 +25,7 @@
          </div>
          <div class="product-card__info">
             <router-link
-               :to="'/products/' + vendorCode"
+               :to="{ name: 'product', params: { vendorCode } }"
                class="product-card__image"
             >
                <img :src="rootPath + 'img/products/' + product.images[0]" alt />
@@ -34,13 +34,13 @@
                <product-rating :rating="product.rating"></product-rating>
             </div>
          </div>
-         <router-link :to="'/products/' + vendorCode" class="product-card__name">{{ product.name }}</router-link>
+         <router-link :to="{ name: 'product', params: { vendorCode } }" class="product-card__name">{{ product.name }}</router-link>
          <div
             class="product-card__text"
          >Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.</div>
          <div class="product-card__buttons product-buttons" ref="cardButtons">
             <router-link
-               :to="'/products/' + vendorCode"
+               :to="{ name: 'product', params: { vendorCode } }"
                class="button button--colored-bg"
             >Купить</router-link>
             <div class="product-card__price">{{ product.price }} ₽</div>

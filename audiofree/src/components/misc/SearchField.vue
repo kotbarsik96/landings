@@ -43,6 +43,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import rootPath from "@/assets/root-path";
 
 export default {
    name: "SearchField",
@@ -54,6 +55,7 @@ export default {
    },
    data() {
       return {
+         rootPath,
          searchQuery: "",
          isSearchShown: false,
          isResultsShown: false,
