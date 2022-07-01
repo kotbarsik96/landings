@@ -35,8 +35,8 @@
             },
             "examples": [
                 {
-                    "text": "audiofree",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/catalogue/"
+                    "text": "Audiofree",
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/#/catalogue/"
                 },
                 {
                     "text": "Device",
@@ -53,7 +53,7 @@
             },
             "examples": [
                 {
-                    "text": "audiofree (на главной странице несколько слайдеров)",
+                    "text": "Audiofree (на главной странице несколько слайдеров)",
                     "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 },
                 {
@@ -82,7 +82,7 @@
             },
             "examples": [
                 {
-                    "text": "audiofree (классический спойлер активируется на мобильной версии)",
+                    "text": "Audiofree (классический спойлер активируется на мобильной версии)",
                     "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 }
             ]
@@ -97,7 +97,7 @@
             "examples": [
                 {
                     "text": "audiofree (для вызова нужно совершить действие с товаром, например: добавить в корзину/избранное, удалить из корзины/избранного)",
-                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/catalogue"
+                    "url": "https://kotbarsik96.github.io/sites/audiofree/dist/#/catalogue/"
                 }
             ]
         },
