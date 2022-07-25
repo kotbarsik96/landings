@@ -12,10 +12,10 @@
                      <a href="#">Войти в аккаунт</a>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-products/favorites.html">Отложенные товары</a>
+                     <router-link :to="{ name: 'favorites' }">Отложенные товары</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-products/cart.html">Ваши заказы</a>
+                     <router-link :to="{ name: 'cart' }">Ваши заказы</router-link>
                   </div>
                </div>
                <div class="footer-main__back-call input-field">
@@ -36,22 +36,22 @@
                <div class="footer-main__title">Категории</div>
                <div class="footer-main__list">
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">TRUE WIRELESS</a>
+                     <router-link :to="{ name: 'catalogue' }">TRUE WIRELESS</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">Гарнитуры</a>
+                     <router-link :to="{ name: 'catalogue' }">Гарнитуры</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">Накладные</a>
+                     <router-link :to="{ name: 'catalogue' }">Накладные</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">Полноразмерные</a>
+                     <router-link :to="{ name: 'catalogue' }">Полноразмерные</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">С проводом</a>
+                     <router-link :to="{ name: 'catalogue' }">С проводом</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/catalogue.html">С шейным ободком</a>
+                     <router-link :to="{ name: 'catalogue' }">С шейным ободком</router-link>
                   </div>
                </div>
             </div>
@@ -59,16 +59,16 @@
                <div class="footer-main__title">Магазин</div>
                <div class="footer-main__list">
                   <div class="footer-main__item">
-                     <a href="../html-main/delivery-payment.html">Доставка и оплата</a>
+                     <router-link :to="{ name: 'delivery-payment' }">Доставка и оплата</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/guarantees.html">Гарантия и возврат</a>
+                     <router-link :to="{ name: 'guarantees' }">Гарантия и возврат</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/delivery-payment.html">Пункты самовывоза</a>
+                     <router-link :to="{ name: 'delivery-payment' }">Пункты самовывоза</router-link>
                   </div>
                   <div class="footer-main__item">
-                     <a href="../html-main/contacts.html">Контакты</a>
+                     <router-link :to="{ name: 'contacts' }">Контакты</router-link>
                   </div>
                </div>
             </div>
@@ -135,6 +135,3 @@ export default {
    name: "PageFooter",
 };
 </script>
-
-<style>
-</style>

@@ -114,6 +114,12 @@ export function generateId(mixins = null) {
     return id;
 }
 
+export function createNode(tagName, className) {
+    const node = document.createElement(tagName);
+    node.className = className;
+    return node;
+}
+
 export function capitalLetter(string) {
     const letters = string.split('');
     letters[0] = letters[0].toUpperCase();
