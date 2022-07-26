@@ -14,7 +14,12 @@ export default createRouter({
         { path: "/blogs", name: "blog-page", meta: { isBlackHeader: true }, component: () => import("@/views/blogs/BlogPage.vue") },
         { path: "/blog-item/:blogId", name: "blog-item", meta: { isBlackHeader: true }, component: () => import("@/views/blogs/BlogItem.vue") },
     ],
-    scrollBehavior() {
+    scrollBehavior(to) {
+        const isContactsReqs = to.name === "contacts" && to.params["contacts-reqs"];
+        const exceptions = [isContactsReqs];
+        
+        for(let except of exceptions) if (except) return false;
+
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve({

@@ -46,10 +46,10 @@
                   <RouterLink :to="{ name: 'blog-page' }">Новости</RouterLink>
                </p>
                <p>
-                  <RouterLink :to="{ name: 'contacts' }">О нас</RouterLink>
+                  <RouterLink :to="{ name: 'contacts', params: {} }">О нас</RouterLink>
                </p>
                <p>
-                  <RouterLink :to="{ name: 'contacts' }">Контакты</RouterLink>
+                  <RouterLink :to="{ name: 'contacts', params: { 'contacts-reqs': true } }">Контакты</RouterLink>
                </p>
             </div>
             <div class="socials menu__socials">

@@ -166,10 +166,18 @@ export default {
             return params ? { name: routeName, params } : { name: routeName };
         },
     },
+    computed: {
+        routePath(){
+            return this.$route.path;
+        }
+    },
     watch: {
         searchQuery(newVal) {
             this.doSearch(newVal);
         },
+        routePath(){
+            this.searchQuery = "";
+        }
     },
 };
 </script>

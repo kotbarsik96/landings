@@ -3,10 +3,10 @@
       <div class="item__header">Информация</div>
       <ul class="item__list">
          <li>
-            <RouterLink :to="{ name: 'contacts' }">О нас</RouterLink>
+            <RouterLink :to="{ name: 'contacts', params: {} }">О нас</RouterLink>
          </li>
          <li>
-            <RouterLink :to="{ name: 'contacts' }">Контакты</RouterLink>
+            <RouterLink :to="{ name: 'contacts', params: { 'contacts-reqs': true } }">Контакты</RouterLink>
          </li>
       </ul>
    </div>

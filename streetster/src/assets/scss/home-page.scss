@@ -63,39 +63,6 @@
 .categories {
     margin-bottom: 170px;
 }
-@media (max-width: 993px) {
-    .categories-slider {
-        height: 30vw;
-
-        &__arrow {
-            &::after,
-            &::before {
-                font-size: 32px;
-            }
-        }
-
-        &__prev {
-            left: 25px;
-        }
-
-        &__next {
-            right: 25px;
-        }
-
-        &__wrapper {
-            height: 100%;
-        }
-
-        &__slide {
-            height: 100%;
-        }
-    }
-    .ctsl-slide {
-        &__container {
-            background-size: 150% 150%;
-        }
-    }
-}
 
 .categories-slider {
     position: relative;
@@ -110,16 +77,18 @@
             }
         }
 
-        &__shadow{
+        &__shadow {
             position: absolute;
             z-index: 50;
             top: 0;
+            width: 300px;
+            height: 500px;
         }
-        &__shadow--right{
+        &__shadow--right {
             right: 0;
             transform: rotate(180deg);
         }
-        &__shadow--left{
+        &__shadow--left {
             left: 0;
         }
 
@@ -175,6 +144,76 @@
     &__text {
         width: 35%;
         height: 10%;
+    }
+}
+
+@media (max-width: 992px) {
+    .categories-slider {
+        .categories-slider {
+            &__slide {
+                height: 350px;
+            }
+
+            &__shadow{
+                width: 150px;
+            }
+            
+            &__prev{
+                left: 25px;
+            }
+
+            &__next{
+                right: 25px;
+            }
+        }
+    }
+    .ctsl-slide {
+        &__container {
+            background-size: 150% 150%;
+        }
+    }
+    .slide-bike{
+        &__image{
+            width: 450px;
+            height: 300px;
+        }
+
+        &__text{
+            width: 300px;
+            height: 75px;
+        }
+    }
+}
+@media (max-width: 579px){
+    .categories-slider{
+        .categories-slider{
+            &__slide{
+                height: 275px;
+            }
+
+            &__shadow{
+                display: none;
+            }
+
+            &__prev{
+                left: 5px;
+            }
+
+            &__next{
+                right: 5px;
+            }
+        }
+    }
+    .slide-bike{
+        &__image{
+            width: 300px;
+            height: 150px;
+        }
+
+        &__text{
+            width: 85%;
+            height: 30px;
+        }
     }
 }
 
