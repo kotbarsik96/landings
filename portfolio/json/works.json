@@ -45,9 +45,10 @@
         "id": "strtstr145",
         "type": "Интернет-магазин",
         "features": [
+            "Фреймворк Vue JS 3",
+            "Функционал корзины",
             "Слайдеры",
-            "Слайдеры (связанные с выбором цвета)",
-            "Работающая корзина (на JS)"
+            "Слайдеры (связанные с выбором цвета)"
         ],
         "url": "https://kotbarsik96.github.io/sites/streetster/dist/",
         "imgDesktop": "img/sites-photo/streetster/desktop",
@@ -87,10 +88,12 @@
         "id": "dfr10",
         "type": "Интернет-магазин",
         "features": [
+            "Фреймворк Vue JS 3",
+            "Функционал корзины",
+            "Фильтр товаров",
+            "Ползунок для установления цены (в фильтре товаров)",
             "Слайдеры",
-            "Спойлеры",
-            "Работающая корзина (на JS)",
-            "Ползунок для установления цены (в фильтре товаров)"
+            "Спойлеры"
         ],
         "url": "https://kotbarsik96.github.io/sites/audiofree/dist/",
         "imgDesktop": "img/sites-photo/audiofree/desktop",
