@@ -1,0 +1,19 @@
+// <NOT-FOUND>==========================================================================================
+.not-found {
+    margin: 50px 0;
+
+    &__container {
+        text-align: center;
+        @include fz-lh(30, 35);
+        font-family: "Poppins";
+    }
+
+    &__link{
+        font-weight: 600;
+    }
+
+    @media (max-width: 992px){
+        margin: 30px 0;
+    }
+}
+// <NOT-FOUND>==========================================================================================

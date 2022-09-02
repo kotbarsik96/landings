@@ -1,0 +1,32 @@
+[
+    {
+        "id": "13561",
+        "name": "Родион Крыжовников",
+        "image": "RodionKryzhovnikov.jpg",
+        "tag": "Покупатель"
+    },
+    {
+        "id": "13562",
+        "name": "Анатолий Синкин",
+        "image": "AnatoliySinkin.jpg",
+        "tag": "Админ"
+    },
+    {
+        "id": "13563",
+        "name": "Андрей Лаков",
+        "image": "AndreyLakov.jpg",
+        "tag": "Покупатель"
+    },
+    {
+        "id": "13564",
+        "name": "Геннадий Горин",
+        "image": "GennadyGorin.jpg",
+        "tag": "Блогер"
+    },
+    {
+        "id": "13565",
+        "name": "Иван Антнонов",
+        "image": "IvanAntonov.jpg",
+        "tag": "Покупатель"
+    }
+]

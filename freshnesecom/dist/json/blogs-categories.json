@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Еда",
+        "id": "food"
+    },
+    {
+        "title": "Советы от  шефа",
+        "id": "chefs"
+    },
+    {
+        "title": "Овощи",
+        "id": "vegetables"
+    },
+    {
+        "title": "Мясо",
+        "id": "meat"
+    },
+    {
+        "title": "Рекомендации",
+        "id": "recommendations"
+    }
+]

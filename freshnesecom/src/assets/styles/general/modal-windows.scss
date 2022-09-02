@@ -1,0 +1,180 @@
+// <MODAL-WINDOW>==================================================================================================
+.modals-wrapper {
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1500;
+}
+.modal-window {
+    cursor: auto;
+    position: absolute;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 24px 16px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 32px rgba(0, 0, 0, 0.15);
+    overflow: auto;
+    width: 490px;
+    max-height: 95%;
+
+    &__wrapper {
+        margin: 0 0 24px 0;
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__header-title {
+        margin: 0 15px 10px 0;
+    }
+
+    &__close-button[class*="button"] {
+        display: flex;
+        align-items: center;
+        font-family: "Open Sans";
+        font-weight: 400;
+        @include fz-lh(12, 16);
+        color: var(--clr-1_D);
+
+        &::before {
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--clr-1_A);
+            margin: 0 0 0 6px;
+            order: 2;
+        }
+        &:hover::before {
+            color: #fff;
+        }
+    }
+
+    &__subtitle {
+        margin: 24px 0 0 0;
+        flex: 0 0 77%;
+        font-family: "Poppins";
+        @include fz-lh(15, 22);
+        color: var(--clr-1_C);
+    }
+
+    @media (max-width: 499px) {
+        width: 90%;
+    }
+}
+// <MODAL-WINDOW>==================================================================================================
+
+// <MODAL-CART>====================================================================================================
+.cart {
+    border-radius: 0;
+    padding: 24px 0 16px 0;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__wrapper {
+        padding: 0 16px;
+    }
+
+    &__subtotal {
+        font-family: "Poppins";
+    }
+
+    &__subtotal-title {
+        margin: 0 0 8px 0;
+    }
+
+    &__subtotal-price {
+        @include fz-lh(26, 39);
+    }
+
+    &__controls {
+        border-top: 1px solid var(--clr-1_E);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding-top: 16px;
+        [class*="button"] {
+            font-weight: 700;
+        }
+    }
+
+    @media (max-width: 599px) {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+    }
+}
+// <MODAL-CART>====================================================================================================
+
+// <MODAL-SUBSCRIBE>===============================================================================================
+.subscribe-window {
+    width: 500px;
+
+    &__body {
+        border-top: 1px solid var(--clr-1_F);
+        padding-top: 24px;
+    }
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        max-height: 180px;
+    }
+
+    @media (max-width: 599px) {
+        width: 90%;
+
+        &__options {
+            max-height: none;
+        }
+    }
+}
+// <MODAL-SUBSCRIBE>===============================================================================================
+
+// <MODAL-ACCOUNT>=================================================================================================
+.modal-account {
+    &__wishlist-button {
+        display: inline-flex;
+        margin: 0 auto;
+        &::before{
+            margin: 0 10px 0 0;
+        }
+    }
+
+    &__signin {
+        border-top: 1px solid var(--clr-1_F);
+        padding: 15px 0 0 0;
+    }
+
+    &__signin-title {
+        margin: 0 0 10px 0;
+    }
+
+    &__signin-inputs {
+        .input-wrapper{
+            margin: 0 0 20px 0;
+            &:last-child{
+                margin: 0;
+            }
+        }
+    }
+}
+// <MODAL-ACCOUNT>=================================================================================================

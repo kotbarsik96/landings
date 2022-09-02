@@ -1,0 +1,70 @@
+// <SIZES>===========================================================================================
+$screen_size: 1260;
+// <SIZES>===========================================================================================
+
+// <TIMINGS>=========================================================================================
+:root {
+    --hover_duration: 0.2s;
+}
+// <TIMINGS>=========================================================================================
+
+// <COLORS>==========================================================================================
+:root {
+    // primary
+    --clr-1_A: #151515;
+    --clr-1_B: #575757;
+    --clr-1_C: #a9a9a9;
+    --clr-1_D: #d1d1d1;
+    --clr-1_E: #ebebeb;
+    --clr-1_F: #f5f5f5;
+    --clr-1_H: #f9f9f9;
+
+    // secondary
+    --clr-2_A: #6a983c;
+    --clr-2_B: #46760a;
+    --clr-2_C: #92c064;
+    --clr-2_D: #c8deb3;
+    --clr-2_E: #f4f8ec;
+
+    // 3
+    --clr-3_A: #d0a866;
+    --clr-3_B: #b28a48;
+    --clr-3_C: #ecd2a6;
+    --clr-3_D: #faedd8;
+    --clr-3_E: #fff9f0;
+
+    // 4
+    --clr-4_A: #e5704b;
+    --clr-4_B: #c7522d;
+    --clr-4_C: #eb8d70;
+    --clr-4_D: #f7c6b7;
+    --clr-4_E: #fff1ed;
+
+    // 5
+    --clr-5_A: #37d0d6;
+    --clr-5_B: #19b2b8;
+    --clr-5_C: #7cd0d3;
+    --clr-5_D: #b9e6e8;
+    --clr-5_E: #ecf6f6;
+
+    // star rating
+    --clr-rating: #fdbc15;
+}
+// <COLORS>==========================================================================================
+
+// <MIXINS>==========================================================================================
+@mixin adaptive-font($pc_size, $mob_size) {
+    $adapt_size: $pc_size - $mob_size;
+    $dev_adapt_size: $adapt_size + $adapt_size * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mob_size}px + #{$dev_adapt_size} * (100vw - 320px) / #{$screen_size}) !important;
+    }
+    @media (min-width: 768px) {
+        font-size: calc(#{$mob_size}px + #{$adapt_size} * (100vw /#{$screen_size})) !important;
+    }
+}
+@mixin fz-lh($font_size, $line_height) {
+    font-size: #{$font_size}px;
+    line-height: calc(#{$line_height} / #{$font_size} * 100%);
+}
+// <MIXINS>==========================================================================================

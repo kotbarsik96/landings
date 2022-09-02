@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Молочные продукты",
+        "id": "dairy"
+    },
+    {
+        "title": "Фрукты и овощи",
+        "id": "fruits-vegetables"
+    },
+    {
+        "title": "Мясо и рыба",
+        "id": "meat-fish"
+    },
+    {
+        "title": "Напитки",
+        "id": "drinks"
+    },
+    {
+        "title": "Товары для кухни",
+        "id": "kitchen"
+    }
+]

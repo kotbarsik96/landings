@@ -1,0 +1,18 @@
+.wishlist-page {
+    &__content{
+        margin: 50px 0;
+    }
+
+    &__container.__empty {
+        @include fz-lh(30, 40);
+        text-align: center;
+
+        [class*="icon"]::before {
+            font-weight: 600;
+        }
+    }
+
+    @media (max-width: 992px){
+        margin: 30px 0;
+    }
+}

@@ -1,0 +1,1 @@
+.links-list-enter-active,.links-list-leave-active{transition:all .3s!important}.links-list-enter-to,.links-list-leave-from{opacity:1;transform:translate(0);max-height:5em}.links-list-enter-from,.links-list-leave-to{opacity:0;transform:translate(-50px);max-height:0;margin:0}

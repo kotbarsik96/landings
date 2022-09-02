@@ -1,0 +1,188 @@
+// <CHECKOUT-PAGE>==================================================================================================
+.checkout-page {
+    &__container {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    &__steps {
+        flex: 0 0 58%;
+    }
+
+    &__step-block {
+        margin: 32px 0 32px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__step-options {
+        .input-field {
+            margin: 0 0 16px 0;
+        }
+        span{
+            display: inline;
+        }
+    }
+
+    &__text-inputs {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 32px;
+        margin: 0 0 32px 0;
+
+        .input-wrapper {
+            flex: 0 0 320px;
+        }
+    }
+
+    &__summary {
+        flex: 0 0 37%;
+    }
+
+    &__security {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 215px;
+        margin: 32px 0 0 0;
+
+        img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            margin: 0 0 10px 0;
+        }
+        p:not(.title) {
+            color: var(--clr-1_C);
+        }
+        p {
+            margin: 0 0 10px 0;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    @media (max-width: #{$screen_size - 51}px) {
+        &__steps {
+            flex: 0 0 50%;
+        }
+
+        &__text-inputs {
+            justify-content: center;
+        }
+
+        &__option--block {
+            display: block;
+        }
+    }
+    @media (max-width: 799px) {
+        &__container {
+            flex-wrap: wrap;
+        }
+
+        &__summary {
+            flex: 1 1 auto;
+        }
+
+        &__steps {
+            flex: 0 0 100%;
+        }
+    }
+    @media (max-width: 349px) {
+        &__text-inputs {
+            .input-wrapper {
+                flex: 0 0 100%;
+            }
+        }
+    }
+}
+.summary {
+    border-radius: 12px;
+    border: 1px solid var(--clr-1_D);
+    padding: 32px 16px;
+    font-family: "Poppins";
+
+    &__cart-list {
+        margin: 0 0 40px 0;
+    }
+
+    &__prices {
+        margin: 0 0 32px 0;
+    }
+
+    &__prices-item {
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &__promocode {
+        margin: 0 0 40px 0;
+    }
+
+    &__total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__total-text {
+        margin: 0 15px 0 0;
+        font-weight: 600;
+        flex: 0 0 250px;
+    }
+
+    &__total-price {
+        @include fz-lh(26, 39);
+        font-weight: 600;
+        color: var(--clr-2_A);
+    }
+
+    @media (max-width: 1059px) {
+        &__total {
+            justify-content: center;
+        }
+
+        &__total-text {
+            margin: 0 20px 10px 0;
+        }
+    }
+}
+// <CHECKOUT-PAGE>==================================================================================================
+
+// <PAYMENT-BLOCK>==================================================================================================
+.payment-card {
+    &__number {
+        margin: 0 0 32px 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__holder {
+        margin: 0 32px 0 0;
+        flex: 1 1 auto;
+    }
+
+    &__back {
+        display: flex;
+        gap: 16px;
+        flex: 0 0 260px;
+    }
+}
+// <PAYMENT-BLOCK>==================================================================================================

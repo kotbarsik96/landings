@@ -1,0 +1,624 @@
+@import "general/mixins-variables.scss";
+@import "general/fonts.scss";
+@import "general/nullstyles.scss";
+@import "general/ui-components.scss";
+@import "general/modal-windows.scss";
+@import "pages/homepage.scss";
+@import "pages/category-page.scss";
+@import "pages/wishlist-page.scss";
+@import "pages/not-found.scss";
+@import "pages/blog.scss";
+@import "pages/product-detail.scss";
+@import "pages/checkout.scss";
+
+// здесь находятся общие стили (тех элементов, которые могут быть на нескольких страницах)
+
+// <ОБЩИЕ СТИЛИ>==========================================================================================
+body {
+    font-family: "Open Sans";
+    font-size: 12px;
+    @include fz-lh(12, 16);
+    color: var(--clr-1_A);
+}
+body.__no-scroll {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+[class*="container"] {
+    max-width: #{$screen_size}px;
+    box-sizing: border-box;
+    padding-right: 45px !important;
+    padding-left: 45px !important;
+    margin: 0 auto;
+    @media (max-width: #{$screen_size + 45}px) {
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+}
+// <ОБЩИЕ СТИЛИ>==========================================================================================
+
+// <BREADCRUMBS>==========================================================================================
+.page-breadcrumbs {
+    padding: 15px 0;
+
+    &__link {
+        @include fz-lh(12, 16);
+    }
+
+    &__delimiter {
+        font-size: inherit;
+        color: var(--clr-1_C);
+        margin: 0 8px;
+    }
+
+    &__prev,
+    a.page-breadcrumbs__prev {
+        color: var(--clr-1_C);
+        &:hover {
+            @extend .link;
+        }
+    }
+}
+// <BREADCRUMBS>==========================================================================================
+
+// <PAGE-HEADLINE>========================================================================================
+.page-headline {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__title {
+        padding: 12px 0;
+        margin: 0 40px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    &__item {
+        color: var(--clr-1_C);
+        font-size: 13px;
+        &::before {
+            font-weight: 600;
+            margin: 0 5px 0 0;
+        }
+    }
+    &__item-control {
+        cursor: pointer;
+    }
+    &__item.__active {
+        &::before {
+            color: var(--clr-2_A) !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+        flex-wrap: wrap;
+    }
+}
+// <PAGE-HEADLINE>========================================================================================
+
+// <HEADLINE>=============================================================================================
+.headline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 0 0 32px 0;
+
+    &__title {
+        margin: 0 0 4px 0;
+    }
+
+    &__descr,
+    &__num {
+        color: var(--clr-1_C);
+    }
+}
+// <HEADLINE>=============================================================================================
+
+// <TEXT-BLOCK>===========================================================================================
+.text-block {
+    margin: 0 0 32px 0;
+
+    &__title {
+        font-weight: 500;
+    }
+
+    &__text {
+        margin: 8px 0 0 0;
+        @include fz-lh(14, 19);
+    }
+
+    &__table {
+        margin: 16px 0 0 0;
+    }
+}
+// <TEXT-BLOCK>===========================================================================================
+
+// <TITLE>================================================================================================
+[class*="title"]:not([class*="title__"]) {
+    font-family: "Poppins";
+    font-weight: 600;
+}
+.title--underlined {
+    text-decoration: underline;
+}
+h1[class*="title"]:not([class*="title__"]) {
+    @include fz-lh(32, 44);
+}
+h2[class*="title"]:not([class*="title__"]) {
+    @include fz-lh(26, 39);
+}
+h3[class*="title"]:not([class*="title__"]) {
+    @include fz-lh(22, 33);
+}
+h4[class*="title"]:not([class*="title__"]) {
+    @include fz-lh(18, 27);
+}
+h5[class*="title"]:not([class*="title__"]) {
+    @include fz-lh(15, 22);
+}
+// <TITLE>================================================================================================
+
+// <HEADER>===============================================================================================
+// desktop
+$header_scrolled_dur: 1s;
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: top $header_scrolled_dur;
+}
+.header-top {
+    background: #fff;
+
+    &__container {
+        border-bottom: 1px solid var(--clr-1_F);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+
+    &__contacts-item {
+        &:not(:last-child) {
+            margin: 0 33px 0 0;
+        }
+    }
+
+    &__nav-item {
+        &:not(:last-child) {
+            margin: 0 33px 0 0;
+        }
+    }
+}
+
+.header-main {
+    background: #fff;
+    position: relative;
+    padding: 51px 0 45px 0;
+    z-index: 50;
+    transition: padding $header_scrolled_dur;
+    border-bottom: 1px solid var(--clr-1_D);
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        img {
+            width: 180px;
+            height: 40px;
+        }
+    }
+
+    &__input-field {
+        flex: 0 0 500px;
+        .select {
+            &__options {
+                max-height: 143px;
+            }
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        cursor: pointer;
+        margin: 0 35px 0 0;
+        font-size: 24px;
+        background: transparent;
+        &::before {
+            transition: color var(--hover_duration);
+        }
+        &:hover::before {
+            color: var(--clr-4_A);
+        }
+    }
+
+    @media (max-width: 939px) {
+        &__input-field {
+            flex: 0 0 54%;
+        }
+        &__icon {
+            margin: 0 15px 0 0;
+            font-size: 24px;
+        }
+    }
+}
+
+.header-bottom {
+    background: var(--clr-1_F);
+    position: relative;
+    z-index: 40;
+    margin-top: 0;
+    transition: margin-top $header_scrolled_dur;
+
+    &__container {
+        padding: 20px 0;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    &__link {
+        font-family: "Poppins";
+        font-weight: 600;
+        text-align: center;
+        @include fz-lh(15, 30);
+        margin: 0 40px 0 0;
+    }
+}
+
+// mobile
+$header_mobile_color: var(--clr-3_C);
+$header_searchshow_dur: 0.4s;
+
+.header {
+    &-mobile {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+}
+
+.header-mobile-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    border-radius: 0 0 15px 15px;
+    background: $header_mobile_color;
+
+    &__icons-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        display: inline-block;
+        flex: 0 0 150px;
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__icons-ui {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        background: transparent;
+        font-size: 25px;
+        &:not(:last-child) {
+            margin: 0 15px 0 0;
+        }
+    }
+    &__icon-search {
+        z-index: 15;
+        transition: transform $header_searchshow_dur;
+    }
+
+    // открытый поиск
+    &__search-block {
+        --search_padding_right: 45px;
+
+        background: $header_mobile_color;
+        position: absolute;
+        left: 0;
+        z-index: 5;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--hover_duration), visibility 0s ease var(--hover_duration);
+        display: flex;
+        align-items: center;
+
+        .input-field {
+            flex: 1 1 auto;
+            padding: 0;
+            margin: 0 0 0 45px;
+            flex-direction: row-reverse;
+        }
+        .input-field,
+        .input-field--combined {
+            border: 0;
+            [class*="body"] {
+                top: 100%;
+                border-color: #000;
+            }
+        }
+        .input-field,
+        .select,
+        .text-input {
+            height: 100%;
+            background: transparent;
+        }
+        .select__item,
+        .text-input__search-result {
+            background: $header_mobile_color;
+            border-color: #000;
+        }
+        .select {
+            &:nth-child(1n),
+            &:nth-child(2n) {
+                border: 0;
+                margin: 0;
+                padding: 0 0 0 10px;
+                @media (max-width: 399px) {
+                    flex: 0 0 150px;
+                }
+                &::before {
+                    margin: 0;
+                }
+            }
+            &__body[class] {
+                width: calc(100% + 1px);
+                right: 0 !important;
+                left: auto !important;
+            }
+        }
+        .text-input {
+            &::before {
+                display: none;
+            }
+
+            border-right: 1px solid #000;
+            padding-right: 5px;
+
+            &__body[class] {
+                left: calc(-1 * var(--search_padding_right)) !important;
+                right: auto !important;
+                width: calc(100% + 40px);
+                @media (max-width: 399px) {
+                    width: 150%;
+                }
+            }
+        }
+    }
+
+    &.__search-shown {
+        .header-mobile-main {
+            &__icon-search {
+                transform: translate(-40px, 0);
+            }
+
+            &__search-block {
+                transition: opacity var(--hover_duration);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    @media (max-width: 399px) {
+        &__logo {
+            flex: 0 0 40%;
+        }
+
+        &__search {
+            padding: 0 0 0 40px;
+            flex: 0 0 55%;
+        }
+
+        [class*="heart"] {
+            display: none;
+        }
+    }
+}
+
+.header-menu {
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    background: $header_mobile_color;
+    visibility: hidden;
+    transition: left 0.3s, visibility 0s ease 0.3s;
+    &.__shown {
+        left: 0;
+        visibility: visible;
+        transition: left 0.3s, visibility 0s ease 0s;
+    }
+
+    &__backward {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    &__backward-icon {
+        font-size: 40px;
+    }
+
+    &__list {
+        width: 100%;
+        height: 85%;
+        overflow: auto;
+        @media (max-height: 389px) {
+            height: 70%;
+        }
+    }
+
+    &__item {
+        padding: 10px;
+        border-top: 1px solid var(--clr-1_A);
+    }
+    &__item-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        @extend .header-menu__item;
+    }
+
+    &__link,
+    a,
+    span {
+        margin: 5px 10px;
+    }
+
+    &__link-bold {
+        font-weight: 600;
+        font-family: "Poppins";
+        @include fz-lh(15, 22);
+    }
+}
+// <HEADER>===============================================================================================
+
+// <FOOTER>===============================================================================================
+.footer {
+    padding: 65px 0 60px 0;
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    &__nav-column {
+        position: relative;
+        .title {
+            margin: 0 0 16px 0;
+        }
+    }
+
+    &__nav-column-links {
+        display: flex;
+        flex-direction: column;
+        z-index: 5;
+        .link {
+            @include fz-lh(14, 19);
+            margin: 0 0 16px 0;
+        }
+    }
+
+    &__tags {
+        margin-bottom: 50px;
+    }
+
+    &__tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__tags-item {
+        margin: 0 16px 16px 0;
+        cursor: pointer;
+    }
+
+    &__copyright {
+        @include fz-lh(14, 19);
+        [class*="link"] {
+            font-family: "Poppins";
+            font-weight: 600;
+        }
+    }
+
+    @media (max-width: 959px) {
+        &__tags-list {
+            justify-content: center;
+        }
+
+        &__tags-item {
+            margin: 5px;
+        }
+    }
+    @media (max-width: 749px) {
+        &__nav {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        &__nav-column {
+            margin: 0 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .title {
+                margin: 0;
+            }
+        }
+
+        &__nav-column-links {
+            position: absolute;
+            top: 100%;
+            min-width: 200px;
+            padding: 10px;
+            border-radius: 12px;
+            background: var(--clr-5_A);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--hover_duration), visibility 0s ease var(--hover_duration);
+            .link {
+                color: #fff;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+        &__nav-column.__active > &__nav-column-links {
+            transition: opacity var(--hover_duration), visibility 0s ease 0s;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+// <FOOTER>===============================================================================================
