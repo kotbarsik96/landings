@@ -1,20 +1,16 @@
 <template>
-    <div
-        class="wrapper"
-        ref="pageWrapper"
-    >
+    <div class="wrapper" ref="pageWrapper">
+        <LoadingScreen v-if="isLoadingState"></LoadingScreen>
         <PageHeader
             :routePath="routePath"
             :metaFields="metaFields"
         ></PageHeader>
         <RouterView v-slot="{ Component }">
-            <Transition
-                name="page-transition"
-                mode="out-in"
-            >
+            <Transition name="page-transition" mode="out-in" @after-enter="onAfterPageEnter">
                 <Component
                     :is="Component"
                     :key="routePath"
+                    ref="pageComponent"
                 />
             </Transition>
         </RouterView>
@@ -23,21 +19,22 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { createDocumentElement } from "@/assets/js/scripts.js";
+import { mapActions, mapGetters } from "vuex";
 import "@/assets/scss/styles.scss";
 import PageHeader from "@/components/page-wrapper/PageHeader.vue";
 import PageFooter from "@/components/page-wrapper/PageFooter.vue";
+import LoadingScreen from "@/components/page-wrapper/LoadingScreen.vue";
 
 export default {
     components: {
         PageHeader,
         PageFooter,
+        LoadingScreen,
     },
     data() {
         return {
             metaFields: {},
-            loadingScreen: null,
+            isAppLoading: true,
         };
     },
     methods: {
@@ -52,71 +49,22 @@ export default {
             if (!metaFields) return (this.metaFields = {});
             this.metaFields = metaFields;
         },
-        createLoadingScreen() {
-            const loadingScreen = createDocumentElement(
-                "div",
-                "loading-screen"
-            );
-            const pLeft = createDocumentElement(
-                "div",
-                "loading-screen__piece loading-screen__piece--left"
-            );
-            const pRight = createDocumentElement(
-                "div",
-                "loading-screen__piece loading-screen__piece--right"
-            );
-
-            createSpans(pLeft);
-            createSpans(pRight);
-            loadingScreen.append(pLeft);
-            loadingScreen.append(pRight);
-
-            this.loadingScreen = loadingScreen;
-
-            function createSpans(block) {
-                for (let i = 1; i <= 20; i++) {
-                    const span = document.createElement("span");
-                    span.style.cssText = `--i: ${i};`;
-                    block.append(span);
-                }
-            }
-        },
-        toggleLoadingScreen() {
-            if (!this.loadingScreen) this.createLoadingScreen();
-
-            // если нет pageWrapper - повторить попытку на nextTick
-            const pWrapper = this.$refs.pageWrapper;
-            if (!pWrapper) {
-                this.$nextTick().then(() =>
-                    setTimeout(this.toggleLoadingScreen, 10)
-                );
-                return;
-            }
-
-            const children = Array.from(this.$refs.pageWrapper.childNodes);
-            const isThreeChildren = children.length === 3;
-            const isNoRouterView = children.find((nd) => nd.nodeType === 8);
-
-            if (isThreeChildren && isNoRouterView) {
-                this.$refs.pageWrapper.prepend(this.loadingScreen);
-            } else this.loadingScreen.remove();
+        onAfterPageEnter(){
+            this.isAppLoading = false;
         },
     },
     computed: {
+        ...mapGetters(["isFetching"]),
         routePath() {
             this.getMetaFields(this.$route.meta);
             return this.$route.path;
         },
-    },
-    created() {
-        this.toggleLoadingScreen();
-    },
-    updated() {
-        this.toggleLoadingScreen();
+        isLoadingState() {
+            return this.isAppLoading || this.isFetching;
+        },
     },
     mounted() {
-        this.loadProducts("bikes");
-        this.loadProducts("accessories");
+        this.loadProducts();
         this.loadCategories();
         this.loadBlogs();
         this.addStorageEventEmitters().then(this.addStorageArraysHandlers);

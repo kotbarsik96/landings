@@ -1,14 +1,8 @@
 <template>
     <page-wrapper>
         <router-view v-slot="{ Component }">
-            <transition
-                name="page-transition"
-                :mode="transitionMode"
-            >
-                <component
-                    :is="Component"
-                    :key="pathKey"
-                ></component>
+            <transition name="page-transition" :mode="transitionMode">
+                <component :is="Component" :key="pathKey"></component>
             </transition>
         </router-view>
         <notifications-list></notifications-list>
@@ -18,17 +12,11 @@
 <script>
 import "@/assets/scss/styles.scss";
 import { mapActions, mapMutations } from "vuex";
-import { createNode } from "@/assets/js/scripts";
 import NotificationsList from "@/components/notifications/NotificationsList";
+import PageWrapper from "@/components/page/PageWrapper";
 
 export default {
-    components: { NotificationsList },
-    data() {
-        return {
-            loadingScreen: null,
-            isLoadingScreenInserted: false,
-        };
-    },
+    components: { NotificationsList, PageWrapper },
     computed: {
         pathKey() {
             // не обновлять страницу в следующих разделах: catalogue
@@ -61,55 +49,6 @@ export default {
 
             return isException;
         },
-        createLoadingScreen() {
-            const lScreen = createNode("div", "loading-screen");
-            const lScreenLogo = createNode(
-                "div",
-                "loading-screen__icon __icon-logo"
-            );
-            const lScreenWrapper = createNode("div", "loading-screen__wrapper");
-
-            const circlesAmount = 20;
-            for (let i = 1; i <= circlesAmount; i++) {
-                const lScreenCircle = createNode(
-                    "div",
-                    "loading-screen__circle"
-                );
-                lScreenCircle.style.cssText = `--i: ${i};`;
-                lScreenWrapper.append(lScreenCircle);
-            }
-
-            lScreen.append(lScreenWrapper);
-            lScreen.append(lScreenLogo);
-            this.loadingScreen = lScreen;
-        },
-        toggleLoadingScreen() {
-            if (!this.loadingScreen) this.createLoadingScreen();
-
-            const wrapper = document.querySelector(".wrapper");
-            let pageIsLoaded = false;
-            if (wrapper) {
-                const children = Array.from(wrapper.childNodes).filter(
-                    (nd) => nd.nodeType !== 3
-                );
-                pageIsLoaded =
-                    wrapper.querySelector(".header") ||
-                    wrapper.querySelector(".footer") ||
-                    children.length < 3;
-            }
-
-            if (!pageIsLoaded && !this.isLoadingScreenInserted) {
-                document.body.append(this.loadingScreen);
-                this.isLoadingScreenInserted = true;
-                setTimeout(() => {
-                    this.$nextTick().then(this.toggleLoadingScreen);
-                }, 100);
-            }
-            if (pageIsLoaded) this.loadingScreen.remove();
-        },
-    },
-    created() {
-        this.toggleLoadingScreen();
     },
     mounted() {
         this.loadProducts();

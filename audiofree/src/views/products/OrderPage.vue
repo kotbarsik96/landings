@@ -161,7 +161,7 @@
 
 <script>
 import { lStorage, getProd } from "@/assets/js/scripts";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
    name: "OrderPage",
@@ -172,7 +172,8 @@ export default {
       };
    },
    methods: {
-      getProd
+      getProd,
+      ...mapActions(["loadProducts"])
    },
    computed: {
       ...mapGetters(["products"]),
@@ -199,5 +200,8 @@ export default {
          return totalPrice;
       },
    },
+   created(){
+      this.loadProducts();
+   }
 };
 </script>

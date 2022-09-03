@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import rootPath from "@/root-path.js";
 
 export default {
@@ -73,6 +73,7 @@ export default {
       },
    },
    methods: {
+      ...mapActions(["loadBlogs"]),
       mediaRef(childIndex) {
          return `children-${childIndex}-media`;
       },
@@ -100,6 +101,9 @@ export default {
             }
          });
       },
+   },
+   created(){
+      this.loadBlogs();
    },
    mounted() {
       if (!this.blog) {

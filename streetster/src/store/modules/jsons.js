@@ -27,6 +27,8 @@ function modifyBikesArray(array) {
 
 export default {
     state: () => ({
+        isFetching: false,
+
         products: {
             bikesArray: [],
             accessoriesArray: [],
@@ -35,31 +37,68 @@ export default {
         blogsArray: []
     }),
     actions: {
-        async loadProducts({ commit }, key) {
-            const request = await fetch(pathToFolder + key + ".json");
-            const products = await request.json();
-            const data = { key, products };
-            commit("getProducts", data);
+        async loadProducts({ commit }) {
+            // названия json'ов, содержащих в себе товары
+            const productTypes = ["bikes", "accessories"];
+            for (let prodType of productTypes) doLoad(prodType);
+
+            async function doLoad(prodType) {
+                commit("changeFetchingState", true);
+                const request = await fetch(pathToFolder + prodType + ".json");
+
+                try {
+                    const products = await request.json();
+                    const data = { prodType, products };
+                    commit("getProducts", data);
+                } catch (err) {
+                    commit("getProducts", { prodType, products: [] });
+                } finally {
+                    commit("changeFetchingState", false);
+                }
+            }
         },
-        async loadCategories({ commit }){
+        async loadCategories({ commit }) {
+            commit("changeFetchingState", true);
+
             const request = await fetch(pathToFolder + "categories.json");
-            const data = await request.json();
-            commit("getBikeCategories", data);
+            try {
+                const data = await request.json();
+                commit("getBikeCategories", data);
+            } catch (err) {
+                commit("getBikeCategories", []);
+            } finally {
+                commit("changeFetchingState", false);
+            }
         },
         async loadBlogs({ commit }) {
+            commit("changeFetchingState", true);
+
             const request = await fetch(pathToFolder + "blogs.json");
-            const blogs = await request.json();
-            commit("getBlogs", blogs);
+            try {
+                const blogs = await request.json();
+                commit("getBlogs", blogs);
+            } catch (err) {
+                commit("getBlogs", []);
+            } finally {
+                commit("changeFetchingState", false);
+            }
         },
     },
     mutations: {
+        changeFetchingState(state, isFetchingState) {
+            const timeout = isFetchingState ? 0 : 1000;
+            setTimeout(() => {
+                state.isFetching = isFetchingState;
+            }, timeout);
+        },
+
         getProducts(state, data) {
-            const key = data.key + "Array"; // e.g. "bikes" + "Array"
+            const prodType = data.prodType + "Array"; // e.g. "bikes" + "Array"
             let products = data.products;
-            if (data.key === "bikes") {
+            if (data.prodType === "bikes") {
                 products = modifyBikesArray(data.products);
             }
-            state.products[key] = products;
+            state.products[prodType] = products;
         },
         getBikeCategories(state, categories) {
             state.bikeCategories = categories;
@@ -82,20 +121,24 @@ export default {
         }
     },
     getters: {
+        isFetching(state) {
+            return state.isFetching;
+        },
+
         currency() {
             return "₴";
         },
         bikes(state) {
-            return state.products.bikesArray;
+            return state.products.bikesArray || [];
         },
         accessories(state) {
-            return state.products.accessoriesArray;
+            return state.products.accessoriesArray || [];
         },
         categories(state) {
-            return state.bikeCategories;
+            return state.bikeCategories || [];
         },
         blogs(state) {
-            return state.blogsArray;
+            return state.blogsArray || [];
         }
     }
 }

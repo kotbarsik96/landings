@@ -1,10 +1,11 @@
 <template>
-    <main
-        class="bike-page"
-    >
+    <main class="bike-page">
         <div class="start-block bike-page__start-block">
             <div class="start-block__wrapper">
-                <div class="start-block__container bike-order container" v-if="bike">
+                <div
+                    class="start-block__container bike-order container"
+                    v-if="bike"
+                >
                     <div class="bike-order__slider">
                         <BikeSlider
                             :bike="bike"
@@ -13,7 +14,9 @@
                     </div>
                     <div class="bike-order__name-price">
                         <div class="bike-order__name h2">{{ bike.title }}</div>
-                        <div class="bike-order__price">{{ bike.price }} {{ currency }}</div>
+                        <div class="bike-order__price">
+                            {{ bike.price }} {{ currency }}
+                        </div>
                     </div>
                     <div class="bike-order__params">
                         <BikeColors
@@ -28,26 +31,44 @@
                             :key="paramKey"
                             ref="paramsBlock"
                         >
-                            <div class="params__text">
-                                <div class="params__text-title">{{ param.title }}:</div>
-                            </div>
-                            <form class="params__figures">
-                                <label
-                                    class="squares__wrapper param__wrapper"
-                                    v-for="(opt, optIndex) in param.list"
-                                    :key="optIndex"
-                                >
-                                    <input
-                                        type="radio"
-                                        :name="paramKey"
-                                        @change="bikeParams[paramKey].data = opt"
-                                    />
-                                    <div class="squares__square-big param__item">
-                                        <div class="squares__square-small param__subitem"></div>
+                            <template v-if="bikeParams[paramKey]">
+                                <div class="params__text">
+                                    <div class="params__text-title">
+                                        {{ param.title }}:
                                     </div>
-                                    <div class="squares__text">{{ opt.split('/')[0] }}</div>
-                                </label>
-                            </form>
+                                </div>
+                                <form class="params__figures">
+                                    <label
+                                        class="squares__wrapper param__wrapper"
+                                        v-for="(opt, optIndex) in param.list"
+                                        :key="optIndex"
+                                    >
+                                        <input
+                                            type="radio"
+                                            :name="paramKey"
+                                            @change="
+                                                bikeParams[paramKey].data = opt
+                                            "
+                                        />
+                                        <div
+                                            class="
+                                                squares__square-big
+                                                param__item
+                                            "
+                                        >
+                                            <div
+                                                class="
+                                                    squares__square-small
+                                                    param__subitem
+                                                "
+                                            ></div>
+                                        </div>
+                                        <div class="squares__text">
+                                            {{ opt.split("/")[0] }}
+                                        </div>
+                                    </label>
+                                </form>
+                            </template>
                         </div>
                     </div>
                     <div class="bike-order__accessories accessories">
@@ -61,15 +82,28 @@
                                 <div class="accessories-item__image">
                                     <img
                                         v-if="accessories"
-                                        :src="rootPath + 'images/accessories/' + getAcc(accId).image"
+                                        :src="
+                                            rootPath +
+                                            'images/accessories/' +
+                                            getAcc(accId).image
+                                        "
                                         alt
                                     />
                                 </div>
                                 <div class="accessories-item__text">
-                                    <div class="accessories-item__name">{{ getAcc(accId).title }}</div>
-                                    <div class="accessories-item__price">{{ getAcc(accId).price }}</div>
+                                    <div class="accessories-item__name">
+                                        {{ getAcc(accId).title }}
+                                    </div>
+                                    <div class="accessories-item__price">
+                                        {{ getAcc(accId).price }}
+                                    </div>
                                 </div>
-                                <label class="accessories-item__button button-to-cart">
+                                <label
+                                    class="
+                                        accessories-item__button
+                                        button-to-cart
+                                    "
+                                >
                                     <input
                                         type="checkbox"
                                         :name="`${bike.id}-accessory`"
@@ -85,38 +119,32 @@
                     <div class="bike-order__order">
                         <div class="bike-order__total">
                             <div class="bike-order__total-text">Итого:</div>
-                            <p>{{ totalPrice.toLocaleString() }} {{ currency }}</p>
+                            <p>
+                                {{ totalPrice.toLocaleString() }} {{ currency }}
+                            </p>
                         </div>
-                        <div
-                            class="bike-order__button"
-                            v-if="!isAddedToCart"
-                        >
-                            <div
-                                class="button"
-                                @click="addToCart"
-                            >Заказать</div>
+                        <div class="bike-order__button" v-if="!isAddedToCart">
+                            <div class="button" @click="addToCart">
+                                Заказать
+                            </div>
                             <div
                                 class="button"
                                 v-if="lastOrderId"
                                 @click="cancelOrder(true)"
-                            >Отменить последний заказ</div>
+                            >
+                                Отменить последний заказ
+                            </div>
                         </div>
-                        <div
-                            class="bike-order__button"
-                            v-if="isAddedToCart"
-                        >
-                            <RouterLink
-                                :to="{ name: 'cart' }"
-                                class="button"
-                            >Перейти в корзину</RouterLink>
-                            <div
-                                class="button"
-                                @click="cancelOrder"
-                            >Отменить заказ</div>
-                            <div
-                                class="button"
-                                @click="orderMore(false)"
-                            >Заказать ещё</div>
+                        <div class="bike-order__button" v-if="isAddedToCart">
+                            <RouterLink :to="{ name: 'cart' }" class="button"
+                                >Перейти в корзину</RouterLink
+                            >
+                            <div class="button" @click="cancelOrder">
+                                Отменить заказ
+                            </div>
+                            <div class="button" @click="orderMore(false)">
+                                Заказать ещё
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +155,9 @@
                 <div class="bike-page__description">
                     <div class="h3 h__left">Описание</div>
                     <div class="text">
-                        <p v-for="(p, i) in bike.description" :key="i"> {{ p }} </p>
+                        <p v-for="(p, i) in bike.description" :key="i">
+                            {{ p }}
+                        </p>
                     </div>
                 </div>
                 <div class="bike-page__feedbacks bike-feedbacks">
@@ -137,11 +167,21 @@
                             <div class="bike-feedback__user">
                                 <div class="user__nickname">Андрей К.</div>
                                 <div class="user__rating">
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
                                 </div>
                             </div>
                             <div class="bike-feedback__text text">
@@ -152,15 +192,33 @@
                             <div class="bike-feedback__user">
                                 <div class="user__nickname">Дмитрий Ж.</div>
                                 <div class="user__rating">
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
-                                    <div class="user__rating-item __icon-star"></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
+                                    <div
+                                        class="user__rating-item __icon-star"
+                                    ></div>
                                 </div>
                             </div>
                             <div class="bike-feedback__text text">
-                                Спортивная, стильная модель. Сам по себе занимаюсь спортом. Именно по этой причине мне необходимо было приобрести для себя велосипед. Интересовал качественный вариант. Нравится, чтобы велосипед был спортивным. Понравилась на сайте мне такая модель. У него циклокроссовая комплектация. Поэтому вечерам по дорогам на нем свободно можно кататься. Быстрый, стильный, хорошего качества.
+                                Спортивная, стильная модель. Сам по себе
+                                занимаюсь спортом. Именно по этой причине мне
+                                необходимо было приобрести для себя велосипед.
+                                Интересовал качественный вариант. Нравится,
+                                чтобы велосипед был спортивным. Понравилась на
+                                сайте мне такая модель. У него циклокроссовая
+                                комплектация. Поэтому вечерам по дорогам на нем
+                                свободно можно кататься. Быстрый, стильный,
+                                хорошего качества.
                             </div>
                         </li>
                     </ul>
@@ -168,7 +226,9 @@
             </div>
             <div class="bike-page__models other-models">
                 <div class="other-models">
-                    <div class="other-models__header h2 container">Другие модели {{ capitalLetter(bike.category) }} Series</div>
+                    <div class="other-models__header h2 container">
+                        Другие модели {{ capitalLetter(bike.category) }} Series
+                    </div>
                     <div class="other-models__container container">
                         <div class="other-models__list">
                             <BikeCard
@@ -185,7 +245,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { getProdById, lStorage, capitalLetter } from "@/assets/js/scripts.js";
 import BikeSlider from "@/components/bike-section/BikeSlider.vue";
 import BikeColors from "@/components/bike-section/BikeColors.vue";
@@ -238,6 +298,7 @@ export default {
     },
     methods: {
         capitalLetter,
+        ...mapActions(["loadProducts"]),
         getAcc(id) {
             return getProdById(this.accessories, id);
         },
@@ -317,9 +378,11 @@ export default {
         },
     },
     created() {
-        if (this.bike) {
-            this.setParamsTitles();
-        }
+        this.loadProducts().then(() => {
+            if (this.bike) {
+                this.setParamsTitles();
+            }
+        });
     },
     mounted() {
         if (this.bike) {

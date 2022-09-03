@@ -7,19 +7,31 @@
             ></div>
 
             <div class="start-block__wrapper">
-                <div class="start-block__container container series-block__container">
+                <div
+                    class="
+                        start-block__container
+                        container
+                        series-block__container
+                    "
+                >
                     <div class="series-block__bike bike-block">
                         <div
                             class="bike-block__container"
-                            :style="`background-image: url('${rootPath + category.image}')`"
+                            :style="`background-image: url('${
+                                rootPath + category.image
+                            }')`"
                         >
-                            <img :src="`${rootPath}${bike.colors.list[0].image}`" />
+                            <img
+                                :src="`${rootPath}${bike.colors.list[0].image}`"
+                            />
                         </div>
                     </div>
                     <div class="series-block__info info-block">
-                        <div class="info-block__header h1">{{ categoryTitle }} Series</div>
+                        <div class="info-block__header h1">
+                            {{ categoryTitle }} Series
+                        </div>
                         <div class="info-block__text">
-                            <p> {{ category.description }} </p>
+                            <p>{{ category.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -35,11 +47,25 @@
                 <div class="series-item__container container">
                     <div class="series-item__info bike-info">
                         <div class="series-item__info-header bike-info__header">
-                            <div class="series-item__info-name bike-info__name h2">{{ catBike.title }}</div>
-                            <div class="series-item__info-price bike-info__price">{{ catBike.price + currency }}</div>
+                            <div
+                                class="
+                                    series-item__info-name
+                                    bike-info__name
+                                    h2
+                                "
+                            >
+                                {{ catBike.title }}
+                            </div>
+                            <div
+                                class="series-item__info-price bike-info__price"
+                            >
+                                {{ catBike.price + currency }}
+                            </div>
                         </div>
                         <div class="series-item__info-text bike-info__text">
-                            <p v-for="(p, i) in catBike.description" :key="i"> {{ p }} </p>
+                            <p v-for="(p, i) in catBike.description" :key="i">
+                                {{ p }}
+                            </p>
                         </div>
                         <div class="series-item__info-colors bike-info__colors">
                             <BikeColors
@@ -49,9 +75,13 @@
                         </div>
                         <div class="series-item__button">
                             <RouterLink
-                                :to="{ name: 'bike-page', params: { bikeId: catBike.id } }"
+                                :to="{
+                                    name: 'bike-page',
+                                    params: { bikeId: catBike.id },
+                                }"
                                 class="button"
-                            >Подробнее</RouterLink>
+                                >Подробнее</RouterLink
+                            >
                         </div>
                     </div>
                     <div class="series-item__bike">
@@ -67,7 +97,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import BikeSlider from "@/components/bike-section/BikeSlider.vue";
 import BikeColors from "@/components/bike-section/BikeColors.vue";
 import rootPath from "@/root-path.js";
@@ -85,6 +115,7 @@ export default {
         };
     },
     methods: {
+        ...mapActions(["loadProducts", "loadCategories"]),
         findCategoryBikes(bike) {
             return bike.category === this.categoryTitle;
         },
@@ -97,15 +128,33 @@ export default {
                 this.$router.push({ name: "404" });
             } else return title;
         },
-        category(){
-            return this.categories.find(category => category.title === this.categoryTitle);
+        category() {
+            if (this.categories) {
+                if (this.categories.length > 0) {
+                    const category = this.categories.find(
+                        (category) => category.title === this.categoryTitle
+                    );
+                    if (category) return category;
+                    this.$router.push({ name: "404" });
+                }
+            }
+            return null;
         },
         bike() {
-            return this.bikes.find(this.findCategoryBikes);
+            if (this.bikes) {
+                const bike = this.bikes.find(this.findCategoryBikes);
+                if (bike) return bike;
+                this.$router.push({ name: "404" });
+            }
+            return null;
         },
         categoryBikes() {
             return this.bikes.filter(this.findCategoryBikes);
         },
     },
+    created(){
+        this.loadProducts();
+        this.loadCategories();
+    }
 };
 </script>

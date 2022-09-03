@@ -1,6 +1,3 @@
-import PageWrapper from "@/components/page/PageWrapper";
-import PageHeader from "@/components/page/PageHeader";
-import PageFooter from "@/components/page/PageFooter";
 import ProductRating from "@/components/product-cards/ProductRating";
 import ProductCard1 from "@/components/product-cards/ProductCard1";
 import ProductCard2 from "@/components/product-cards/ProductCard2";
@@ -13,9 +10,6 @@ import SearchField from "@/components/misc/SearchField";
 import SelectBlock from "@/components/misc/SelectBlock";
 
 export default [
-    PageHeader,
-    PageFooter,
-    PageWrapper,
     ProductRating,
     ProductCard1,
     ProductCard2,

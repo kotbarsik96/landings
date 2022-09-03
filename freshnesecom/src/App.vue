@@ -51,7 +51,7 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["isLoadingState"]),
+        ...mapGetters(["isLoadingState", "isLoadingError"]),
         routePath() {
             if (this.$route.path.includes("category")) {
                 return this.$route.name + this.$route.params.categoryId;
@@ -66,10 +66,7 @@ export default {
         },
     },
     methods: {
-        ...mapActions([
-            "loadJsonFile",
-            "getLocalStorageToState"
-        ]),
+        ...mapActions(["loadJsonFile", "getLocalStorageToState"]),
         createLoadingSections() {},
         addLocalStorageListeners() {
             const methods = ["setItem", "removeItem", "clear"];
@@ -126,6 +123,21 @@ export default {
         this.addLocalStorageListeners();
         this.getLocalStorageToState();
         this.loadJsonFile("products");
+        this.$watch(
+            () => this.isLoadingError,
+            (isError) => {
+                this.$router.push({ name: "404" });
+                // выполнится только в случае ошибки загрузки json
+                if (isError) {
+                    this.$watch(
+                        () => this.$route.path,
+                        () => {
+                            this.$router.push({ name: "404" });
+                        }
+                    );
+                }
+            }
+        );
     },
     mounted() {
         this.isAppLoaded = true;

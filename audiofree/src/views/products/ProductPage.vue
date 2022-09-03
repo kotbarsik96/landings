@@ -249,7 +249,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapMutations, mapGetters, mapActions } from "vuex";
 import SpoilerTabWrapper from "@/components/spoiler-tab/SpoilerTabWrapper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
@@ -306,6 +306,7 @@ export default {
    },
    methods: {
       ...mapMutations(["addProductCardComponent", "addNotification"]),
+      ...mapActions(["loadProducts"]),
       toggleFavorites,
       mediaQueriesHandlers,
       addToCart,
@@ -342,6 +343,7 @@ export default {
    },
    created() {
       if (this.product) {
+         this.loadProducts();
          this.loadProductsInfo();
       } else {
          this.$router.push({ name: "not-found" });

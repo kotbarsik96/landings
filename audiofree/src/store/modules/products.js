@@ -54,15 +54,27 @@ export default {
     },
     actions: {
         async loadProducts({ commit }) {
+            commit("changeFetchingState", true);
+
             const query = await fetch(rootPath + "json/products.json");
-            const products = await query.json();
-            commit("modifyAndGetProducts", products);
+            try {
+                const products = await query.json();
+                commit("modifyAndGetProducts", products);
+            } catch (err) {
+                commit("setNoProducts")
+            }
+            finally {
+                commit("changeFetchingState", false);
+            }
         }
     },
     mutations: {
         modifyAndGetProducts(state, loadedProducts) {
             loadedProducts = modifyProducts(loadedProducts);
             state.products = loadedProducts;
+        },
+        setNoProducts(state) {
+            state.isProductsLoadError = true;
         },
         addProductCardComponent(state, component) {
             state.productCards.push(component);
@@ -71,6 +83,7 @@ export default {
     getters: {
         products: (state) => state.products,
         productCards: (state) => state.productCards,
-        maxProductRating: (state) => state.maxProductRating
+        maxProductRating: (state) => state.maxProductRating,
+        isProductsLoadError: (state) => state.isProductsLoadError
     },
 }

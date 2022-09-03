@@ -3,7 +3,8 @@ import HomePage from "@/views/index/HomePage";
 
 const routes = [
   // folder: "index"
-  { path: '/:pathValue(.*)*', name: 'not-found', component: () => import("@/views/index/NotFound") },
+  { path: '/:pathValue(.*)*', redirect: { name: '/not-found' } },
+  { path: '/not-found', name: 'not-found', component: () => import("@/views/index/NotFound") },
   { path: '/', name: 'home', component: HomePage },
   { path: '/guarantees', name: 'guarantees', component: () => import("@/views/index/GuaranteesPage") },
   { path: '/delivery-payment', name: 'delivery-payment', component: () => import("@/views/index/DeliveryPaymentPage") },

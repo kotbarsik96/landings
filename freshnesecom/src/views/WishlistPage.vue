@@ -17,8 +17,8 @@
                 >Сетка</PageHeadlineItem
             >
             <PageHeadlineItem>
-                <span class="tag--colored">117</span>
-                Товаров
+                Товаров:
+                <span class="tag--colored">{{ wishlist.length }}</span>
             </PageHeadlineItem>
         </PageHeadline>
         <section class="wishlist-page__content">

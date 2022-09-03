@@ -35,7 +35,7 @@
 
 <script>
 import { lStorage } from "@/assets/js/scripts";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
    name: "FavoritesPage",
@@ -45,6 +45,7 @@ export default {
       };
    },
    methods: {
+      ...mapActions(["loadProducts"]),
       getStorageFavoriteProducts() {
          this.favoriteProducts =
             lStorage.getStorage(lStorage.keys.favorites) || [];
@@ -60,6 +61,9 @@ export default {
          },
          deep: true,
       },
+   },
+   created(){
+      this.loadProducts();
    },
    mounted() {
       this.getStorageFavoriteProducts();

@@ -488,7 +488,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper";
 import { EffectFlip } from "swiper";
 import "swiper/css/bundle";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
    components: {
@@ -506,5 +506,11 @@ export default {
    computed: {
       ...mapGetters(["products"]),
    },
+   methods: {
+      ...mapActions(["loadProducts"])
+   },
+   created(){
+      this.loadProducts();
+   }
 };
 </script>
