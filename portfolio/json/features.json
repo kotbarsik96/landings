@@ -41,6 +41,10 @@
                 {
                     "text": "Device",
                     "url": "https://kotbarsik96.github.io/sites/device/dist/main/catalogue.html#range-example"
+                },
+                {
+                    "text": "Freshnesecom",
+                    "url": "https://kotbarsik96.github.io/sites/freshnesecom/dist/#/category/dairy/page_1"
                 }
             ]
         },
@@ -53,12 +57,16 @@
             },
             "examples": [
                 {
+                    "text": "Streetster (связан с кружочками выбора цвета)",
+                    "url": "https://kotbarsik96.github.io/sites/streetster/dist/#/category/street"
+                },
+                {
                     "text": "Audiofree (на главной странице несколько слайдеров)",
                     "url": "https://kotbarsik96.github.io/sites/audiofree/dist/"
                 },
                 {
-                    "text": "Streetster (связан с кружочками выбора цвета)",
-                    "url": "https://kotbarsik96.github.io/sites/streetster/dist/#/category/street"
+                    "text": "Freshnesecom",
+                    "url": "https://kotbarsik96.github.io/sites/freshnesecom/dist/#/"
                 },
                 {
                     "text": "Trevland",

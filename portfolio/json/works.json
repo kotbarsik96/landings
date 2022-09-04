@@ -2,7 +2,8 @@
     {
         "title": "device",
         "id": "dev23",
-        "type": "Интернет-магазин",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": false,
         "features": [
             "Слайдеры",
             "Ползунок для установления цены (в фильтре товаров)"
@@ -16,7 +17,8 @@
     {
         "title": "GamerShop",
         "id": "gshop41",
-        "type": "Интернет-магазин",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": true,
         "features": [
             "Слайдеры",
             "Анимация при прокрутке страницы"
@@ -30,7 +32,8 @@
     {
         "title": "molecule",
         "id": "mlc16",
-        "type": "Услуги по разработке ПО",
+        "pretitle": "Услуги по разработке ПО",
+        "isSinglePage": true,
         "features": [
             "Слайдеры"
         ],
@@ -43,7 +46,8 @@
     {
         "title": "streetster",
         "id": "strtstr145",
-        "type": "Интернет-магазин",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": false,
         "features": [
             "Фреймворк Vue JS 3",
             "Функционал корзины",
@@ -59,7 +63,8 @@
     {
         "title": "Takeaway & Delivery",
         "id": "tkwdlvr51",
-        "type": "Онлайн заказ доставки еды",
+        "pretitle": "Онлайн заказ доставки еды",
+        "isSinglePage": true,
         "features": [
             "Переключаемое меню",
             "Работающая корзина (на JS)"
@@ -73,7 +78,8 @@
     {
         "title": "trevland",
         "id": "trvlnd54",
-        "type": "Бронирование путешествий",
+        "pretitle": "Бронирование путешествий",
+        "isSinglePage": true,
         "features": [
             "Слайдеры"
         ],
@@ -86,7 +92,8 @@
     {
         "title": "audiofree",
         "id": "dfr10",
-        "type": "Интернет-магазин",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": false,
         "features": [
             "Фреймворк Vue JS 3",
             "Функционал корзины",
@@ -104,7 +111,8 @@
     {
         "title": "webovio",
         "id": "wbv0",
-        "type": "Креативное агентство",
+        "pretitle": "Креативное агентство",
+        "isSinglePage": true,
         "features": [
             "Анимация при прокрутке страницы"
         ],
@@ -117,7 +125,8 @@
     {
         "title": "yebo",
         "id": "y3b0",
-        "type": "Интернет-магазин",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": true,
         "features": [
             "Параллакс эффект"
         ],
@@ -130,7 +139,8 @@
     {
         "title": "resource",
         "id": "rsrc3",
-        "type": "Сайт для фотографов",
+        "pretitle": "Сайт для фотографов",
+        "isSinglePage": true,
         "features": [
             "Анимация при прокрутке страницы"
         ],
@@ -143,7 +153,8 @@
     {
         "title": "vantage",
         "id": "v4nt4g3",
-        "type": "Креативное агентство",
+        "pretitle": "Креативное агентство",
+        "isSinglePage": true,
         "features": [
             "Анимация при прокрутке страницы"
         ],
@@ -151,6 +162,24 @@
         "imgDesktop": "img/sites-photo/vantage/desktop",
         "imgMobile": "img/sites-photo/vantage/mobile",
         "imgIcon": "img/sites-photo/vantage/icon.png",
+        "isDesktop": true
+    },
+    {
+        "title": "freshnesecom",
+        "id": "f7e54n353c0m",
+        "pretitle": "Интернет-магазин",
+        "isSinglePage": false,
+        "features": [
+            "Фреймворк Vue JS 3",
+            "Функционал корзины",
+            "Слайдеры",
+            "Фильтр товаров",
+            "Ползунок для установления цены (в фильтре товаров)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/freshnesecom/dist/#/",
+        "imgDesktop": "img/sites-photo/freshnesecom/desktop",
+        "imgMobile": "img/sites-photo/freshnesecom/mobile",
+        "imgIcon": "img/sites-photo/freshnesecom/icon.png",
         "isDesktop": true
     }
 ]
