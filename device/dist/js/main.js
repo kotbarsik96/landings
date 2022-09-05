@@ -12,6 +12,87 @@ function checkWebpSupport() {
 }
 
 checkWebpSupport();
+// отложенная загрузка слайдера свайпера
+const swiperLoad = new Promise(resolve => {
+    setTimeout(() => {
+        const script = document.createElement("script");
+        script.src = "../js/swiper-bundle.min.js";
+        document.body.append(script);
+        setTimeout(() => {
+            resolve();
+        }, 500);
+    }, 1000);
+});
+swiperLoad.then(() => {
+    // MAIN-SLIDER //=========================================================================
+    const mainSlider = new Swiper('.main-slider', {
+        pagination: {
+            el: '.main-slider__pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 7500
+        },
+        speed: 0,
+        allowTouchMove: false
+    });
+
+    // CONSUMER-SLIDER //=====================================================================
+    const consumerSlider = new Swiper('.consumer-info__slider', {
+        speed: 0,
+        allowTouchMove: false
+    });
+    function initPagination() {
+        const consumerBlocks = document.querySelectorAll('.consumer-info');
+        consumerBlocks.forEach(block => {
+            const pagButtons = block.querySelectorAll('.consumer-info__pagination-button');
+            const slider = block.querySelector('.consumer-info__slider');
+            const slides = Array.from(slider.querySelectorAll('.consumer-info__slide'));
+
+            let sliderInstance = consumerSlider;
+            if (consumerSlider.length > 0) {
+                for (let i = 0; i < consumerSlider.length; i++) {
+                    const inst = consumerSlider[i];
+                    if (inst.el === slider) sliderInstance = inst;
+                }
+            }
+            setActive(slides, pagButtons, sliderInstance);
+
+            const array = [];
+            for (let i = 0; i < pagButtons.length; i++) {
+                const btn = pagButtons[i];
+                const slideIndex = i;
+                const obj = { btn: btn, slide: slides[i], slideIndex: slideIndex };
+                array.push(obj);
+            }
+
+            array.forEach(info => {
+                info.btn.addEventListener('click', () => {
+                    if (info.btn && info.slide) {
+                        sliderInstance.slideTo(info.slideIndex);
+                        activeBtn(pagButtons, info.btn);
+                    }
+                });
+            });
+        });
+
+        function activeBtn(pagButtons, btn) {
+            pagButtons.forEach(btn => btn.classList.remove('__active'));
+            btn.classList.add('__active');
+        }
+        function setActive(slides, pagButtons, sliderInstance) {
+            const index = 0;
+            const btn = pagButtons[index];
+            const slide = slides[index];
+
+            sliderInstance.slideTo(index);
+            activeBtn(pagButtons, btn);
+        }
+    }
+    initPagination();
+});
+
 // COORDS //==============================================================================
 function getCoords(elem) {
     const coords = elem.getBoundingClientRect();
@@ -55,6 +136,39 @@ function toggleBody(btn, body, mediaValue = null) {
     }
 }
 
+// MAPS LOADING BY INTERSECTION OBSERVER //===============================================
+function deferredMapsLoading() {
+    const mapContainer = document.querySelector("#map");
+    if (!mapContainer) return;
+
+    const options = { threshold: 1.0 };
+    const callback = (entries) => {
+        const tg = entries[0];
+        const top = tg.boundingClientRect.top;
+        const isReadyToLoadMaps = (top <= document.documentElement.offsetHeight || window.offsetHeight)
+            || (tg.isIntersecting);
+        if (isReadyToLoadMaps && !isMapLoaded) {
+            loadMaps();
+            isMapLoaded = true;
+            observer.unobserve(target);
+        }
+    };
+    const observer = new IntersectionObserver(callback, options);
+    const target = document.querySelector("#intersection-load-maps");
+    let isMapLoaded = false;
+
+    observer.observe(target);
+
+    function loadMaps() {
+        const iframe = document.createElement("iframe");
+        console.log(iframe);
+        iframe.src = "https://yandex.ru/map-widget/v1/?um=constructor%3Aac473187741f5d897b5dc10b78069cc6f6aea0f00ad658742fb27e942ee63ca2&amp;source=constructor";
+        iframe.frameborder = "0";
+        mapContainer.append(iframe);
+    }
+}
+deferredMapsLoading();
+
 // HEADER //==============================================================================
 class Header {
     constructor() {
@@ -69,74 +183,6 @@ class Header {
     }
 }
 const header = new Header();
-
-// MAIN-SLIDER //=========================================================================
-const mainSlider = new Swiper('.main-slider', {
-    pagination: {
-        el: '.main-slider__pagination',
-        type: 'bullets',
-        clickable: true,
-    },
-    autoplay: {
-        delay: 7500
-    },
-    speed: 0,
-    allowTouchMove: false
-});
-
-// CONSUMER-SLIDER //=====================================================================
-const consumerSlider = new Swiper('.consumer-info__slider', {
-    speed: 0,
-    allowTouchMove: false
-});
-function initPagination() {
-    const consumerBlocks = document.querySelectorAll('.consumer-info');
-    consumerBlocks.forEach(block => {
-        const pagButtons = block.querySelectorAll('.consumer-info__pagination-button');
-        const slider = block.querySelector('.consumer-info__slider');
-        const slides = Array.from(slider.querySelectorAll('.consumer-info__slide'));
-
-        let sliderInstance = consumerSlider;
-        if (consumerSlider.length > 0) {
-            for (let i = 0; i < consumerSlider.length; i++) {
-                const inst = consumerSlider[i];
-                if (inst.el === slider) sliderInstance = inst;
-            }
-        }
-        setActive(slides, pagButtons, sliderInstance);
-
-        const array = [];
-        for (let i = 0; i < pagButtons.length; i++) {
-            const btn = pagButtons[i];
-            const slideIndex = i;
-            const obj = { btn: btn, slide: slides[i], slideIndex: slideIndex };
-            array.push(obj);
-        }
-
-        array.forEach(info => {
-            info.btn.addEventListener('click', () => {
-                if (info.btn && info.slide) {
-                    sliderInstance.slideTo(info.slideIndex);
-                    activeBtn(pagButtons, info.btn);
-                }
-            });
-        });
-    });
-
-    function activeBtn(pagButtons, btn) {
-        pagButtons.forEach(btn => btn.classList.remove('__active'));
-        btn.classList.add('__active');
-    }
-    function setActive(slides, pagButtons, sliderInstance) {
-        const index = 0;
-        const btn = pagButtons[index];
-        const slide = slides[index];
-
-        sliderInstance.slideTo(index);
-        activeBtn(pagButtons, btn);
-    }
-}
-initPagination();
 
 // CATALOGUE HOVER //=====================================================================
 function catalogueHoverInit() {
