@@ -1,15 +1,18 @@
 // отложенная загрузка слайдера свайпера
-const swiperLoad = new Promise(resolve => {
-    setTimeout(() => {
-        const script = document.createElement("script");
-        script.src = "../js/swiper-bundle.min.js";
-        document.body.append(script);
-        setTimeout(() => {
-            resolve();
-        }, 500);
-    }, 1000);
-});
-swiperLoad.then(() => {
+setTimeout(() => {
+    const script = document.createElement("script");
+    script.src = "../js/swiper-bundle.min.js";
+    document.body.append(script);
+    setTimeout(initSliders, 100);
+}, 100);
+let counter = 0;
+function initSliders() {
+    if (typeof Swiper === "undefined") {
+        counter++;
+        if (counter < 20) return setTimeout(initSliders, 100);
+        else return;
+    }
+
     // MAIN-SLIDER //=========================================================================
     const mainSlider = new Swiper('.main-slider', {
         pagination: {
@@ -77,7 +80,7 @@ swiperLoad.then(() => {
         }
     }
     initPagination();
-});
+}
 
 // COORDS //==============================================================================
 function getCoords(elem) {
@@ -147,7 +150,6 @@ function deferredMapsLoading() {
 
     function loadMaps() {
         const iframe = document.createElement("iframe");
-        console.log(iframe);
         iframe.src = "https://yandex.ru/map-widget/v1/?um=constructor%3Aac473187741f5d897b5dc10b78069cc6f6aea0f00ad658742fb27e942ee63ca2&amp;source=constructor";
         iframe.frameborder = "0";
         mapContainer.append(iframe);
