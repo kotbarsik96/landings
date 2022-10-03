@@ -65,6 +65,14 @@ export class SpoilerElem {
     }
 }
 
+export const _lStorage = {
+    changeEvent: new Event("storageChange"),
+    setItem: function (key, value) {
+        document.dispatchEvent(this.changeEvent);
+        window.localStorage.setItem(key, value);
+    }
+}
+
 // получить товар по коду vendorCode
 export function getProd(vendorCode) {
     return this.products.filter(prod => prod.vendorCode === vendorCode)[0];
@@ -87,7 +95,7 @@ export const lStorage = {
         return array;
     },
     setStorage(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
+        _lStorage.setItem(key, JSON.stringify(value));
     },
     addToArray(arrKey, value) {
         let array = this.getStorage(arrKey);
