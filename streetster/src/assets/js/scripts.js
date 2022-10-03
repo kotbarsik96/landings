@@ -90,5 +90,6 @@ export const lStorage = {
         const storageKey = this.keys[key];
         const stringifiedVal = JSON.stringify(value);
         localStorage.setItem(storageKey, stringifiedVal);
+        document.dispatchEvent(new Event("changeLocalStorage"));
     }
 }

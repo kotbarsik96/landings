@@ -105,6 +105,7 @@ export const lStorage = {
         key = this.defineKey(key);
         item = JSON.stringify(item);
         localStorage.setItem(key, item);
+        document.dispatchEvent(new Event("lStorageChange"));
     },
     getItem(key) {
         key = this.defineKey(key);
