@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    @@include('html-snippets/head.html', { prepath: "" })
+    @@include('html-snippets/fonts.html', { prepath: "" })
+    <title>Профтест</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container container">
+                Профессиональное самоопределение
+            </div>
+        </header>
+        <main class="content">
+            <section class="headline">
+                <div class="container">
+                    <h1 class="headline__title">
+                        Тест на профориентацию
+                    </h1>
+                </div>
+            </section>
+            <section class="content__body">
+                <div class="container quiz-container">
+                    <div class="quiz-container__start">
+                        <p class="quiz-container__start-text">
+                            Вашему вниманию предлагается модифицированный тест Центра тестирования и развития МГУ
+                            «Гуманитарные технологии», ориентированный на измерение Ваших интересов, важных для выбора
+                            профессии, специальности, должности. В этом тесте нет «правильных» и «неправильных» ответов;
+                            любой выбранный вами ответ свидетельствует о тех или иных ваших предпочтениях и то, что для
+                            одной профессии неприемлемо, для другой может очень даже пригодиться. Старайтесь как можно
+                            реже выбирать второй вариант («затрудняюсь ответить»), поскольку это может снизить точность
+                            полученных результатов.
+                        </p>
+                        <div class="button-container">
+                            <button class="button" id="start-button">
+                                НАЧАТЬ ТЕСТИРОВАНИЕ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
