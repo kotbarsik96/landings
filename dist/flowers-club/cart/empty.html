@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/flowers-club/css/styles.min.css">
+<link rel="shortcut icon" href="/flowers-club/img/icons/favicon.ico" type="image/x-icon">
+    <title>Каталог</title>
+    <style>
+        :root {
+            --article_topic_color: var(--red);
+            --article-card-noimage_color: #fff4f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <aside class="site-menu">
+    <div class="site-menu__icons"></div>
+    <div class="site-menu__logo">
+        <a href="/flowers-club/">
+            <img src="/flowers-club/img/icons/logo.png" alt="Клуб Садоводов">
+        </a>
+    </div>
+    <nav class="site-menu__nav site-nav">
+        <ul class="site-nav__list">
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="#">ГЛАВНАЯ</a>
+            </li>
+            <li class="site-nav__list-item spoiler">
+                <button class="site-nav__list-link spoiler__button" type="button">СТАТЬИ</button>
+                <ul class="site-nav__sublist spoiler__content">
+                    <li class="site-nav__sublist-item">
+                        <a class="site-nav__sublist-link" href="#">
+                            Экология
+                        </a>
+                    </li>
+                    <li class="site-nav__sublist-item">
+                        <a class="site-nav__sublist-link" href="#">
+                            Дизайн ландшафта
+                        </a>
+                    </li>
+                    <li class="site-nav__sublist-item">
+                        <a class="site-nav__sublist-link" href="#">
+                            Льготы и гос. поддержка
+                        </a>
+                    </li>
+                    <li class="site-nav__sublist-item">
+                        <a class="site-nav__sublist-link" href="#">
+                            Уход за растениями
+                        </a>
+                    </li>
+                    <li class="site-nav__sublist-item">
+                        <a class="site-nav__sublist-link" href="#">
+                            Агротехника
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="#">ФОРУМ</a>
+            </li>
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="/flowers-club/about/">О КЛУБЕ</a>
+            </li>
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="#">ОТЗОВИК</a>
+            </li>
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="#">НАЙТИ ЭКСПЕРТА</a>
+            </li>
+            <li class="site-nav__list-item">
+                <a class="site-nav__list-link" href="/flowers-club/shop/catalog/">МАГАЗИН</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="site-menu__user-block">
+        <div id="header-user-links-mobile"></div>
+        <a class="button" href="#">
+            <span class="icon-crown"></span>
+            Вступить в клуб
+        </a>
+    </div>
+    <a class="button button--white site-menu__sign-up" href="#">
+        Регистрация
+    </a>
+    <ul class="site-menu__socials">
+        <li class="site-menu__socials-item">
+            <a class="site-menu__socials-icon icon-telegram" href="https://web.telegram.org/z/"></a>
+        </li>
+        <li class="site-menu__socials-item">
+            <a class="site-menu__socials-icon icon-vk" href="https://vk.com/"></a>
+        </li>
+        <li class="site-menu__socials-item">
+            <a class="site-menu__socials-icon icon-youtube" href="https://www.youtube.com/"></a>
+        </li>
+    </ul>
+    <div class="site-menu__user-agreement">
+        <a class="link" href="/flowers-club/user-agreement/">Пользовательское соглашение</a>
+    </div>
+</aside>
+<header class="header">
+    <div class="header__logo">
+        <a href="/flowers-club/">
+            <img src="/flowers-club/img/icons/logo.png" alt="Клуб Садоводов">
+        </a>
+    </div>
+    <div class="header__icons"></div>
+    <div class="header__search">
+        <div class="search-wrapper __shown" data-disable-toggle="(min-width: 1440px)">
+            <div class="search-wrapper__icon icon-search"></div>
+            <input class="search-wrapper__input" type="text" placeholder="Поиск">
+        </div>
+    </div>
+    <button class="header__menu-button menu-button" type="button">
+        <span class="menu-button__item"></span>
+        <span class="menu-button__item"></span>
+        <span class="menu-button__item"></span>
+    </button>
+    <div class="header__user-block">
+        <a class="icon-cart icon-wrapper" href="/flowers-club/cart/" data-dynamic-adaptive=".header__icons, 1439"></a>
+        <!-- авторизованный -->
+        <a class="icon-bell icon-wrapper icon-wrapper--notify" data-dynamic-adaptive=".site-menu__icons, 1439"
+            href="#"></a>
+        <a class="user-avatar" data-dynamic-adaptive=".site-menu__user-block, 1439" href="/flowers-club/profile/full/">
+            <img src="/flowers-club/img/avatars/default.png" alt="Аватар">
+        </a>
+        <!-- неавторизованный -->
+        <span class="fw-500" data-dynamic-adaptive="#header-user-links-mobile, 1439">
+            <button class="link" type="button" data-modal-call="name:auth; refresh:true; iframeSrc:/flowers-club/auth/login/index.html">
+                Войти
+            </button>
+            <span class="link">/</span>
+            <button class="link" type="button" data-modal-call="name:auth; refresh:true; iframeSrc:/flowers-club/auth/signup/index.html">
+                Регистрация
+            </button>
+        </span>
+    </div>
+</header>
+            <div class="catalog" data-dynamic-adaptive=".header__icons, 1439">
+    <button class="catalog__button button button--gray-pink">
+        <span class="catalog__button-icon icon-bullet-list"></span>
+        <span class="catalog__button-text">Каталог</span>
+    </button>
+    <div class="catalog__container">
+        <div class="catalog__categories">
+            <ul class="catalog__categories-list">
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/tree_plodovye.svg" alt="Плодовые" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Плодовые деревья
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/grapes.svg" alt="Виноград" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Виноград
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/strawberry.svg" alt="Земляника" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Земляника садовая
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/rose.svg" alt="Роза" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Роза
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/blueberry.svg" alt="Черника" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Ягодные кустарники
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/decorative_trees.svg" alt="Дерево" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Декоративные деревья
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__category-item">
+                    <button class="catalog__category-item-button" type="button">
+                        <img src="/flowers-club/img/icons/catalog/decorative_bushes.svg" alt="Кустарник" class="catalog__category-item-icon">
+                        <span class="catalog__category-item-text">
+                            Декоративные кустарники
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="catalog__subcategories">
+            <h4 class="catalog__subcategories-title">Плодовые деревья</h4>
+            <ul class="catalog__subcategories-list">
+                <li class="catalog__subcategory-item __active">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Яблоня
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Айва
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Жимолость
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Черешня
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Алыча
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Дюк
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Персик
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Вишня
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Фундук
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Нектарин
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Грецкий орех
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Слива
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Миндаль
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Груша
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Шелковица
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Абрикос
+                        </span>
+                    </button>
+                </li>
+                <li class="catalog__subcategory-item">
+                    <button class="catalog__subcategory-item-button" type="button">
+                        <span class="catalog__subcategory-item-text">
+                            Кизил
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+            <div class="content">
+                <section class="section">
+                    <div class="content__container">
+                        <h1 class="section__title section__title--bigger">Ваша корзина пуста</h1>
+                        <p class="text">
+                            Добавьте что-нибудь из каталога или воспользуйтесь нашими рекомендациями
+                        </p>
+                        <a class="button" style="margin-top: 20px" href="/flowers-club/shop/">ПЕРЕЙТИ К ПОКУПКАМ</a>
+                    </div>
+                </section>
+                <section class="section products-recommend">
+                    <div class="content__container">
+                        <h3 class="section__title">
+                            Вам может понравиться
+                        </h3>
+                        <ul class="products-list">
+                            <li class="products-list__item">
+                                <div class="product-card">
+                                    <div class="product-card__buttons">
+                                        <button
+                                            class="product-card__button product-card__button--like icon-wrapper icon-wrapper--circle icon-heart"></button>
+                                        <button
+                                            class="product-card__button product-card__button--cart icon-wrapper icon-wrapper--circle icon-cart"></button>
+                                    </div>
+                                    <div class="product-card__image">
+                                        <a href="/flowers-club/shop/catalog/trees_plodovye/product/">
+                                            <img class="product-card__image-img"
+                                                src="/flowers-club/img/products/apples/golden-delicious/1.png"
+                                                alt="Голден Делишес">
+                                        </a>
+                                    </div>
+                                    <div class="product-card__info">
+                                        <div class="product-card__rating star-rating"></div>
+                                        <div class="product-card__title">
+                                            <a href="#">
+                                                Яблоки Голден Делишес
+                                            </a>
+                                        </div>
+                                        <div class="product-card__price">
+                                            390 ₽
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="products-list__item">
+                                <div class="product-card">
+                                    <div class="product-card__buttons">
+                                        <button
+                                            class="product-card__button product-card__button--like icon-wrapper icon-wrapper--circle icon-heart"></button>
+                                        <button
+                                            class="product-card__button product-card__button--cart icon-wrapper icon-wrapper--circle icon-cart"></button>
+                                    </div>
+                                    <div class="product-card__image">
+                                        <img class="product-card__image-img"
+                                            src="/flowers-club/img/products/apples/ligolred/1.png" alt="Голден Делишес">
+                                    </div>
+                                    <div class="product-card__info">
+                                        <div class="product-card__rating star-rating"></div>
+                                        <div class="product-card__title">
+                                            <a href="#">
+                                                Яблоки Лиголред
+                                            </a>
+                                        </div>
+                                        <div class="product-card__price">
+                                            420 ₽
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="products-list__item">
+                                <div class="product-card">
+                                    <div class="product-card__buttons">
+                                        <button
+                                            class="product-card__button product-card__button--like icon-wrapper icon-wrapper--circle icon-heart"></button>
+                                        <button
+                                            class="product-card__button product-card__button--cart icon-wrapper icon-wrapper--circle icon-cart"></button>
+                                    </div>
+                                    <div class="product-card__image">
+                                        <a href="/flowers-club/shop/catalog/trees_plodovye/product/">
+                                            <img class="product-card__image-img"
+                                                src="/flowers-club/img/products/apples/golden-delicious/1.png"
+                                                alt="Голден Делишес">
+                                        </a>
+                                    </div>
+                                    <div class="product-card__info">
+                                        <div class="product-card__rating star-rating"></div>
+                                        <div class="product-card__title">
+                                            <a href="#">
+                                                Яблоки Голден Делишес
+                                            </a>
+                                        </div>
+                                        <div class="product-card__price">
+                                            390 ₽
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="products-list__item">
+                                <div class="product-card">
+                                    <div class="product-card__buttons">
+                                        <button
+                                            class="product-card__button product-card__button--like icon-wrapper icon-wrapper--circle icon-heart"></button>
+                                        <button
+                                            class="product-card__button product-card__button--cart icon-wrapper icon-wrapper--circle icon-cart"></button>
+                                    </div>
+                                    <div class="product-card__image">
+                                        <img class="product-card__image-img"
+                                            src="/flowers-club/img/products/apples/ligolred/1.png" alt="Голден Делишес">
+                                    </div>
+                                    <div class="product-card__info">
+                                        <div class="product-card__rating star-rating"></div>
+                                        <div class="product-card__title">
+                                            <a href="#">
+                                                Яблоки Лиголред
+                                            </a>
+                                        </div>
+                                        <div class="product-card__price">
+                                            420 ₽
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="/flowers-club/js/scripts.js"></script>
+    <script src="/flowers-club/js/shop.js"></script>
+</body>
+
+</html>
