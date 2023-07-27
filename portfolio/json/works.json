@@ -181,5 +181,20 @@
         "imgMobile": "img/sites-photo/freshnesecom/mobile",
         "imgIcon": "img/sites-photo/freshnesecom/icon.png",
         "isDesktop": true
+    },
+    {
+        "title": "flowers-club",
+        "id": "fl0337s51ub",
+        "pretitle": "Статьи, интернет-магазин",
+        "isSinglePage": false,
+        "features": [
+            "Слайдеры",
+            "Ползунок для установления цены (в фильтре товаров)"
+        ],
+        "url": "https://kotbarsik96.github.io/sites/flowers-club/dist/",
+        "imgDesktop": "img/sites-photo/flowers-club/desktop",
+        "imgMobile": "img/sites-photo/flowers-club/mobile",
+        "imgIcon": "img/sites-photo/flowers-club/icon.png",
+        "isDesktop": true
     }
 ]
