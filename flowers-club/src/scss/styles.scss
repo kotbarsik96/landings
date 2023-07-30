@@ -867,7 +867,7 @@ label {
     &__image {
         flex: 0 1 430px;
         height: 490px;
-        background: url("/flowers-club/img/not-found/image.png") center/cover no-repeat;
+        background: url("/sites/flowers-club/dist/img/not-found/image.png") center/cover no-repeat;
     }
 
     &__title {
@@ -2117,7 +2117,7 @@ label {
 .auth-modal {
     width: 940px;
     height: 640px;
-    background: url("/flowers-club/img/signup/background.png") center/cover no-repeat;
+    background: url("/sites/flowers-club/dist/img/signup/background.png") center/cover no-repeat;
     display: flex;
     justify-content: flex-end;
 
@@ -2842,7 +2842,7 @@ label {
         overflow: hidden;
 
         &::before {
-            content: url("/flowers-club/img/icons/camera.svg");
+            content: url("/sites/flowers-club/dist/img/icons/camera.svg");
             width: 37px;
             height: 32px;
             transform: translate(0, -5px);
@@ -4925,7 +4925,7 @@ label {
 
     &__header {
         width: 100%;
-        background: url("/flowers-club/img/about/header.png") center/cover no-repeat;
+        background: url("/sites/flowers-club/dist/img/about/header.png") center/cover no-repeat;
         min-height: 635px;
         display: flex;
     }
